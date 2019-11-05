@@ -8,7 +8,7 @@ import string
 from textblob import TextBlob
 import preprocessor as p
 import nltk
-#from nltk.stem import WordNetLemmatizer
+from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 nltk.download('stopwords')
