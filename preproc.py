@@ -97,13 +97,13 @@ df = pd.read_csv(filepath_or_buffer='./trumpTweets/2016.txt', index_col='id_str'
 #print(df)
 
 # https://pypi.org/project/tweet-preprocessor/
-cleandf = df.copy()
-cleandf['text'] = cleandf['text']\
+clean_df = df.copy()
+clean_df['text'] = clean_df['text']\
     .map(p.clean)\
     .map(clean_tweets)
-mask = (cleandf['text'].str.len() >= 20)
-cleandf = cleandf[mask]
-print(cleandf.head(25))
+mask = (clean_df['text'].str.len() >= 20)
+clean_df = clean_df[mask]
+print(clean_df.head(25))
 
 """TODO"""
 #maybe extend the default stop words as in
