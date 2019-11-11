@@ -2,6 +2,7 @@ import os
 import json
 import pandas as pd
 import numpy as np
+from sent_analyzer import sentences_to_sentiments
 import csv
 import re #regular expression
 import string
@@ -89,21 +90,25 @@ def clean_tweets(tweet):
     return ' '.join(filtered_tweet)
 
 
-#with open('trumptweets.json') as json_file:
-#    data = json.load(json_file)
-#df = pd.read_json(data, orient='records')
-
 df = pd.read_csv(filepath_or_buffer='./trumpTweets/2016.txt', index_col='id_str')
-#print(df)
 
 # https://pypi.org/project/tweet-preprocessor/
+
+# clean the tweets
 clean_df = df.copy()
 clean_df['text'] = clean_df['text']\
     .map(p.clean)\
     .map(clean_tweets)
 mask = (clean_df['text'].str.len() >= 20)
 clean_df = clean_df[mask]
-print(clean_df.head(25))
+
+# get the tweet sentiments
+sentiment_df = sentences_to_sentiments(clean_df['text'])
+
+# join the tweet and sentiments
+joined_df = clean_df.join(sentiment_df)
+
+print(joined_df.head(25))
 
 """TODO"""
 #maybe extend the default stop words as in

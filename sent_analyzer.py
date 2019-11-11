@@ -1,16 +1,16 @@
-from nltk.sentiment.vader import SentimentIntensityAnalyzer
-import nltk
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
+import pandas as pd
 
 # CREDIT https://towardsdatascience.com/trump-tweets-and-trade-96ac157ef082
 
 analyser = SentimentIntensityAnalyzer()
-nltk.download('vader_lexicon')
-sia = SentimentIntensityAnalyzer()
 
-def sentiment_analyzer_scores(sentence):
-    score = analyser.polarity_scores(sentence)
-    print("{:-<40} {}".format(sentence, str(score)))
 
-sentiment_analyzer_scores("russians playing fools funny watch nt clue tot")
+def sentence_to_sentiment(sentence):
+    return analyser.polarity_scores(sentence)
 
+def sentences_to_sentiments(sentence_df):
+    sentiment_df = sentence_df.map(sentence_to_sentiment)
+    sentiment_dict = sentiment_df.to_dict()
+    return pd.DataFrame.from_dict(data=sentiment_dict, orient='index')
 
