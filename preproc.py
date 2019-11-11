@@ -93,27 +93,17 @@ def clean_tweets(tweet):
 #    data = json.load(json_file)
 #df = pd.read_json(data, orient='records')
 
-df = pd.read_csv('tweets.csv')
+df = pd.read_csv(filepath_or_buffer='./trumpTweets/2016.txt', index_col='id_str')
 #print(df)
+
+# https://pypi.org/project/tweet-preprocessor/
 cleandf = df.copy()
-cleanalllen = df.copy()
-
-for i in range(0,11638):
-    text_i = df['text'][i]
-    len_i = len(text_i)
-    # https://pypi.org/project/tweet-preprocessor/
-    clean_i = p.clean(text_i)
-    filtered_i = clean_tweets(clean_i)
-    cleanalllen['text'][i] = filtered_i
-    if len_i < 20:
-        cleandf['text'][i] = np.NaN
-    elif len_i >= 20:
-        cleandf['text'][i] = filtered_i
-
-cleandf = cleandf.dropna()
-print(df.head(25))
+cleandf['text'] = cleandf['text']\
+    .map(p.clean)\
+    .map(clean_tweets)
+mask = (cleandf['text'].str.len() >= 20)
+cleandf = cleandf[mask]
 print(cleandf.head(25))
-#print(cleanalllen.head(20))
 
 """TODO"""
 #maybe extend the default stop words as in
