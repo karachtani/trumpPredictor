@@ -12,6 +12,8 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+import datetime
+
 nltk.download('stopwords')
 nltk.download('punkt')
 nltk.download('wordnet')
@@ -108,7 +110,20 @@ sentiment_df = sentences_to_sentiments(clean_df['text'])
 # join the tweet and sentiments
 joined_df = clean_df.join(sentiment_df)
 
-print(joined_df.head(25))
+
+joined_df['date'] = [datetime.datetime.strptime(x, "%m-%d-%Y %H:%M:%S").strftime("%Y-%m-%d") for x in joined_df['created_at']]
+
+print(joined_df)
+
+from stock_util import get_single_stock_data, clean_stock_data
+
+stock_data = get_single_stock_data(start_date = "2016-01-05")
+cleaned_stock_data = clean_stock_data(stock_data)
+
+print(cleaned_stock_data)
+stock_plus_tweet = pd.merge(joined_df, cleaned_stock_data, on='date')
+
+print(stock_plus_tweet.head(15))
 
 """TODO"""
 #maybe extend the default stop words as in

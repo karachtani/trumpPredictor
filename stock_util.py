@@ -2,6 +2,7 @@ import pandas as pd
 pd.core.common.is_list_like = pd.api.types.is_list_like
 from alpha_vantage.timeseries import TimeSeries
 import numpy as np
+import datetime
 
 def get_single_stock_data(ticker = 'SPY', start_date = '2017-01-05', end_date = '2019-01-05'):
     ts = TimeSeries(key='L906TTW2PFZCXCVW', output_format='pandas')
@@ -35,6 +36,9 @@ def clean_stock_data(data):
              , 1, -1)
     data['Adjusted Price Change'] = np.where((data['1. open'] <= data['5. adjusted close'])
                                             , 1, -1)
+    data = data.reset_index()
+
+    data['date'] = [x.strftime("%Y-%m-%d") for x in data['date']]
 
     # print(data)
     return data
@@ -43,5 +47,5 @@ def clean_stock_data(data):
 
 data = get_single_stock_data()
 cleaned_data = clean_stock_data(data)
-print(cleaned_data)
+# print(cleaned_data)
 
