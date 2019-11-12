@@ -1,7 +1,7 @@
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 import pandas as pd
 
-# CREDIT https://towardsdatascience.com/trump-tweets-and-trade-96ac157ef082
+# CREDIT https://medium.com/analytics-vidhya/simplifying-social-media-sentiment-analysis-using-vader-in-python-f9e6ec6fc52f
 
 analyser = SentimentIntensityAnalyzer()
 
