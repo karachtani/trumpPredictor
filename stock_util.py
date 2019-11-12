@@ -2,6 +2,7 @@ import pandas as pd
 pd.core.common.is_list_like = pd.api.types.is_list_like
 from alpha_vantage.timeseries import TimeSeries
 import numpy as np
+import datetime
 
 def get_single_stock_data(ticker = 'SPY', start_date = '2017-01-05', end_date = '2019-01-05'):
     ts = TimeSeries(key='L906TTW2PFZCXCVW', output_format='pandas')
@@ -31,17 +32,28 @@ def clean_stock_data(data):
 
     # data['Price Change'] = 1 if data['1. open'] < data['5. adjusted close'] else -1
 
-    data['Default Price Change'] = np.where((data['1. open'] <= data['4. close'])
+    data['Default Price Change Label'] = np.where((data['4. close'].diff() >= 0)
              , 1, -1)
-    data['Adjusted Price Change'] = np.where((data['1. open'] <= data['5. adjusted close'])
+    data['Adjusted Price Change Label'] = np.where((data['5. adjusted close'].diff() >= 0)
                                             , 1, -1)
 
-    # print(data)
+    data['Adjusted Price Change %'] = data['5. adjusted close'].pct_change() * 100
+    data['Default Price Change %'] = data['4. close'].pct_change() * 100
+
+    data['Adjusted Price Change %'].fillna(0, inplace=True)
+    data['Default Price Change %'].fillna(0, inplace=True)
+
+
+    data = data.reset_index()
+
+    data['date'] = [x.strftime("%Y-%m-%d") for x in data['date']]
+
+    print(data)
     return data
 
 
 
 data = get_single_stock_data()
 cleaned_data = clean_stock_data(data)
-print(cleaned_data)
+# print(cleaned_data)
 
