@@ -12,8 +12,9 @@ def get_single_stock_data(ticker = 'SPY', start_date = '2017-01-05', end_date = 
     # print(data)
     data = data[data.index >= start_date]
     data = data[data.index <= end_date]
-    data = pd.concat([data['1. open'], data['4. close'], data['5. adjusted close']], axis=1)
-    # print(data)
+    data = data[['1. open','4. close','5. adjusted close']]
+    data = data.sort_index()
+    print(data)
     return data
 
 def get_multi_stock_data(tickers = [], start_date = '2017-01-05', end_date = '2019-01-05'):
@@ -52,8 +53,8 @@ def clean_stock_data(data):
     return data
 
 
-
-data = get_single_stock_data()
-cleaned_data = clean_stock_data(data)
+#
+# data = get_single_stock_data()
+# cleaned_data = clean_stock_data(data)
 # print(cleaned_data)
 
