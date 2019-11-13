@@ -36,7 +36,7 @@ def clean(tweet):
     tweet = re.sub(r'@', '', tweet)
     # Remove HTML special entities (e.g. &amp;)
     tweet = re.sub(r'\&\w*;', '', tweet)
-    # remove hastogs
+    # remove hastags
     tweet = re.sub(r'#', '', tweet)
     return tweet
 
@@ -61,7 +61,7 @@ def sentiment_analyzer_scores_cmp(sentence):
     return score['compound']
 
 
-df = pd.read_csv(filepath_or_buffer='tweets012017_111119.csv',index_col='id_str')
+df = pd.read_csv(filepath_or_buffer='tweets110916_111219.csv',index_col='id_str')
 clean_df = df.copy()
 
 clean_df['text'] = df['text']\
@@ -85,9 +85,12 @@ print(clean_df)
 
 clean_df.to_csv("tweets_sentiments.csv", index=True)
 
+"""TODO"""
+#avg sentiment by day
+#combine with stock data
 #might want to lemmatize, remove stop words, usernames, punctuation, etc for LDA
 #might want to extend stop words for LDA
-
+#granger causality to find lag to be used in classification NN
 
 
 
