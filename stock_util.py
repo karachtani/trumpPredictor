@@ -14,7 +14,6 @@ def get_single_stock_data(ticker = 'SPY', start_date = '2017-01-05', end_date = 
     data = data[data.index <= end_date]
     data = data[['1. open','4. close','5. adjusted close']]
     data = data.sort_index()
-    print(data)
     return data
 
 def get_multi_stock_data(tickers = [], start_date = '2017-01-05', end_date = '2019-01-05'):
@@ -48,8 +47,8 @@ def clean_stock_data(data):
     data = data.reset_index()
 
     data['date'] = [x.strftime("%Y-%m-%d") for x in data['date']]
+    data['date'] = data['date'].astype(str)
 
-    print(data)
     return data
 
 

@@ -3,6 +3,7 @@ import json
 import pandas as pd
 import numpy as np
 import csv
+import datetime
 import re #regular expression
 import string
 #from textblob import TextBlob
@@ -85,10 +86,10 @@ clean_df['cmpd'] = clean_df['text']\
 #print(clean_df)
 
 def getdate(str):
-    return str[:10]
+    return datetime.datetime.strptime(str[:10], '%m-%d-%Y').strftime('%Y-%m-%d')
     
 clean_df['date'] = clean_df['created_at']\
-    .map(getdate)
+    .map(getdate).astype(str)
     
 clean_df['avg_RTcount'] = clean_df.groupby('date')['retweet_count'].transform('mean')
 clean_df['avg_neg'] = clean_df.groupby('date')['neg'].transform('mean')
@@ -96,9 +97,19 @@ clean_df['avg_neu'] = clean_df.groupby('date')['neu'].transform('mean')
 clean_df['avg_pos'] = clean_df.groupby('date')['pos'].transform('mean')
 clean_df['avg_cmpd'] = clean_df.groupby('date')['cmpd'].transform('mean')
 
-#print(clean_df)
+
 
 clean_df.to_csv("tweets_sentiments.csv", index=True)
+
+from stock_util import get_single_stock_data, clean_stock_data
+
+stock_data = get_single_stock_data(start_date = "2016-01-05")
+cleaned_stock_data = clean_stock_data(stock_data)
+
+stock_plus_tweet = pd.merge(clean_df, cleaned_stock_data, on='date')
+
+stock_plus_tweet.to_csv("tweets_stock_data.csv", index=True)
+
 
 """TODO"""
 #combine with stock data
