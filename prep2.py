@@ -62,14 +62,15 @@ def sentiment_analyzer_scores_cmp(sentence):
 
 
 df = pd.read_csv(filepath_or_buffer='tweets110916_111219.csv',index_col='id_str')
+
 clean_df = df.copy()
 
 clean_df['text'] = df['text']\
     .map(clean)
 mask = (clean_df['text'].str.len() >= 20)
 clean_df = clean_df[mask]
-print(df['text'].head(50))
-print(clean_df['text'].head(50))
+#print(df['text'].head(50))
+#print(clean_df['text'].head(50))
 
 analyser = SentimentIntensityAnalyzer()
 
@@ -81,12 +82,25 @@ clean_df['pos'] = clean_df['text']\
     .map(sentiment_analyzer_scores_pos)
 clean_df['cmpd'] = clean_df['text']\
     .map(sentiment_analyzer_scores_cmp)
-print(clean_df)
+#print(clean_df)
+
+def getdate(str):
+    return str[:10]
+    
+clean_df['date'] = clean_df['created_at']\
+    .map(getdate)
+    
+clean_df['avg_RTcount'] = clean_df.groupby('date')['retweet_count'].transform('mean')
+clean_df['avg_neg'] = clean_df.groupby('date')['neg'].transform('mean')
+clean_df['avg_neu'] = clean_df.groupby('date')['neu'].transform('mean')
+clean_df['avg_pos'] = clean_df.groupby('date')['pos'].transform('mean')
+clean_df['avg_cmpd'] = clean_df.groupby('date')['cmpd'].transform('mean')
+
+#print(clean_df)
 
 clean_df.to_csv("tweets_sentiments.csv", index=True)
 
 """TODO"""
-#avg sentiment by day
 #combine with stock data
 #might want to lemmatize, remove stop words, usernames, punctuation, etc for LDA
 #might want to extend stop words for LDA
