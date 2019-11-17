@@ -87,28 +87,46 @@ clean_df['cmpd'] = clean_df['text']\
 
 def getdate(str):
     return datetime.datetime.strptime(str[:10], '%m-%d-%Y').strftime('%Y-%m-%d')
+def gettime(str):
+    return str[11:]
     
 clean_df['date'] = clean_df['created_at']\
     .map(getdate).astype(str)
-    
-clean_df['avg_RTcount'] = clean_df.groupby('date')['retweet_count'].transform('mean')
-clean_df['avg_neg'] = clean_df.groupby('date')['neg'].transform('mean')
-clean_df['avg_neu'] = clean_df.groupby('date')['neu'].transform('mean')
-clean_df['avg_pos'] = clean_df.groupby('date')['pos'].transform('mean')
-clean_df['avg_cmpd'] = clean_df.groupby('date')['cmpd'].transform('mean')
 
+clean_df['time'] = pd.to_timedelta(clean_df['created_at']\
+    .map(gettime)) / np.timedelta64(1, 'h')
+
+# clean_df['avg_RTcount'] = clean_df.groupby('date')['retweet_count'].transform('mean')
+# clean_df['avg_neg'] = clean_df.groupby('date')['neg'].transform('mean')
+# clean_df['avg_neu'] = clean_df.groupby('date')['neu'].transform('mean')
+# clean_df['avg_pos'] = clean_df.groupby('date')['pos'].transform('mean')
+# clean_df['avg_cmpd'] = clean_df.groupby('date')['cmpd'].transform('mean')
 
 
 clean_df.to_csv("tweets_sentiments.csv", index=True)
 
 from stock_util import get_single_stock_data, clean_stock_data
 
-stock_data = get_single_stock_data(start_date = "2016-01-05")
+stock_data = get_single_stock_data(start_date = "2016-11-09", end_date="2019-11-12")
 cleaned_stock_data = clean_stock_data(stock_data)
 
-stock_plus_tweet = pd.merge(clean_df, cleaned_stock_data, on='date')
+stock_plus_tweet = pd.merge(clean_df, cleaned_stock_data, how='outer', on='date')
+
+
+stock_plus_tweet['IsTradingDay'] = stock_plus_tweet['Output'].isnull().map({True: 0, False: 1})
+
+stock_plus_tweet['Output'] = stock_plus_tweet['Output'].fillna(method='backfill')
+
+stock_plus_tweet = stock_plus_tweet[pd.notna(stock_plus_tweet['Output'])]
+stock_plus_tweet = stock_plus_tweet[pd.notna(stock_plus_tweet['text'])]
+
+stock_plus_tweet = stock_plus_tweet[['date','time','retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay','Output']]
 
 stock_plus_tweet.to_csv("tweets_stock_data.csv", index=True)
+
+
+
+print(stock_plus_tweet)
 
 
 """TODO"""
