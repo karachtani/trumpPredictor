@@ -120,13 +120,22 @@ stock_plus_tweet['Output'] = stock_plus_tweet['Output'].fillna(method='backfill'
 stock_plus_tweet = stock_plus_tweet[pd.notna(stock_plus_tweet['Output'])]
 stock_plus_tweet = stock_plus_tweet[pd.notna(stock_plus_tweet['text'])]
 
-stock_plus_tweet = stock_plus_tweet[['date','time','retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay','Output']]
+number_of_tweets = stock_plus_tweet.groupby('date').count()
+
+number_of_tweets['numTweets'] = number_of_tweets['text']
+number_of_tweets = number_of_tweets['numTweets']
+
+stock_plus_tweet = pd.merge(stock_plus_tweet, number_of_tweets, how='left', on='date')
+
+stock_plus_tweet = stock_plus_tweet[['date','time','retweet_count',
+                                     'neg', 'neu', 'pos', 'cmpd',
+                                     'IsTradingDay','numTweets','Output']]
 
 stock_plus_tweet.to_csv("tweets_stock_data.csv", index=True)
 
 
 
-print(stock_plus_tweet)
+# print(stock_plus_tweet)
 
 
 """TODO"""

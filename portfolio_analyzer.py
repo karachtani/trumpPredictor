@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 buy = "BUY"
 sell = "SELL"
@@ -57,6 +58,21 @@ def optimal_strategy(prices_series):
     orders_df['Type'] = orders_df['Type'].map(decision_based_on_difference)
 
     return compute_performance(prices_series, orders_df)
+
+def labels_to_orders(prices_series, labels_series):
+    orders_df = labels_series.groupby(['Date']).agg({'Output': np.sum})
+    orders_df['Type'] = orders_df['Output'].map(majority_vote)
+
+    return compute_performance(prices_series, orders_df)
+
+
+def majority_vote(x):
+    if x > 0:
+        return buy
+    elif x == 0:
+        return nothing
+    else:
+        return sell
 
 
 def decision_based_on_difference(diff):
