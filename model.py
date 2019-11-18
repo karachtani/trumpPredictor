@@ -82,6 +82,16 @@ clf_pred = clf.predict(X_test)
 print('Classification Report')
 print(classification_report(y_test, clf_pred))
 
+#Classification Report
+#              precision    recall  f1-score   support
+#
+#        -1.0       0.44      0.07      0.12       988
+#         1.0       0.58      0.94      0.72      1377
+
+#    accuracy                           0.57      2365
+#   macro avg       0.51      0.50      0.42      2365
+#weighted avg       0.52      0.57      0.47      2365
+
 #repeat for lags 1-5
 #further tune
 
