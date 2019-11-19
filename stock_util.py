@@ -38,7 +38,7 @@ def get_multi_stock_data(tickers = [], start_date = '2017-01-05', end_date = '20
 
     return data
 
-def clean_stock_data(data):
+def clean_stock_data(data, lag=0):
 
     # data['Price Change'] = 1 if data['1. open'] < data['5. adjusted close'] else -1
 
@@ -56,11 +56,10 @@ def clean_stock_data(data):
 
     data = data.reset_index()
 
-    data['date'] = [x.strftime("%Y-%m-%d") for x in data['date']]
+    data['date'] = [(x - np.timedelta64(lag, 'D')).strftime("%Y-%m-%d") for x in data['date']]
     data['date'] = data['date'].astype(str)
 
     return data
-
 
 def maybe_make_data_dir():
     if not os.path.exists(DIR_NAME):
@@ -81,5 +80,5 @@ def make_file_name(ticker, start_date, end_date):
 # data = get_single_stock_data(ticker='AMZN')
 # print(data)
 # cleaned_data = clean_stock_data(data)
-# print(cleaned_data)
+# # print(cleaned_data)
 
