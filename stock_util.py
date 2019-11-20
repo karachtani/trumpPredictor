@@ -2,12 +2,22 @@ import pandas as pd
 pd.core.common.is_list_like = pd.api.types.is_list_like
 from alpha_vantage.timeseries import TimeSeries
 import numpy as np
-import datetime
+import os
+
+
+DIR_NAME = 'stock_data'
 
 def get_single_stock_data(ticker = 'SPY', start_date = '2017-01-05', end_date = '2019-01-05'):
-    ts = TimeSeries(key='L906TTW2PFZCXCVW', output_format='pandas')
-    # Get json object with the intraday data and another with  the call's metadata
-    data, meta_data = ts.get_daily_adjusted(ticker, outputsize='full')
+    maybe_make_data_dir()
+    file_name = make_file_name(ticker, start_date, end_date)
+    data = get_data_from_memory(file_name)
+
+    if data is None:
+        ts = TimeSeries(key='L906TTW2PFZCXCVW', output_format='pandas')
+        # Get json object with the intraday data and another with  the call's metadata
+        data, meta_data = ts.get_daily_adjusted(ticker, outputsize='full')
+        data.to_csv(DIR_NAME + '/' + file_name)
+
     # print(meta_data)
     # print(data)
     data = data[data.index >= start_date]
@@ -51,9 +61,24 @@ def clean_stock_data(data, lag=0):
 
     return data
 
+def maybe_make_data_dir():
+    if not os.path.exists(DIR_NAME):
+        os.makedirs(DIR_NAME)
 
-# #
-# data = get_single_stock_data()
+def get_data_from_memory(file_name):
+    if os.path.isfile(DIR_NAME + '/' + file_name):
+        df = pd.read_csv(DIR_NAME + '/' + file_name)
+        df = df.set_index('date')
+        return df
+    else:
+        return None
+
+def make_file_name(ticker, start_date, end_date):
+    return ticker + "_" + start_date.replace('-', '') + "_" + end_date.replace('-', '') + '.csv'
+
+
+# data = get_single_stock_data(ticker='AMZN')
+# print(data)
 # cleaned_data = clean_stock_data(data)
 # # print(cleaned_data)
 
