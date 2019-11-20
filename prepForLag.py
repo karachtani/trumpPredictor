@@ -1,8 +1,8 @@
 import pandas as pd
 from stock_util import get_single_stock_data, clean_stock_data
-lag = 1
+lag = 5
 data = pd.read_csv("tweets_sentiments.csv")
-stock_data = get_single_stock_data(start_date = "2016-11-09", end_date="2019-11-13")
+stock_data = get_single_stock_data(start_date = "2016-11-01", end_date="2019-11-18")
 cleaned_stock_data = clean_stock_data(stock_data, lag=1)
 
 stock_plus_tweet = pd.merge(data, cleaned_stock_data, how='outer', on='date')
@@ -28,4 +28,4 @@ stock_plus_tweet = stock_plus_tweet[['date','time','retweet_count',
 
 stock_plus_tweet.to_csv("lag" + str(lag) + ".csv", index=True)
 
-print(stock_plus_tweet.head(15))
+print(stock_plus_tweet)

@@ -3,7 +3,7 @@ from sklearn.neural_network import MLPClassifier
 import pandas as pd
 import numpy as np
 
-data = pd.read_csv("tweets_stock_data.csv", index_col=0)
+data = pd.read_csv("lag1.csv", index_col=0)
 
 y = data['Output'].to_list()
 X = data[['time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay']].values.tolist()
