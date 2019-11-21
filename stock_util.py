@@ -56,8 +56,9 @@ def clean_stock_data(data, lag=0):
 
     data = data.reset_index()
 
-    data['date'] = [(x - np.timedelta64(lag, 'D')).strftime("%Y-%m-%d") for x in data['date']]
+    data['date'] = [(np.datetime64(x) - np.timedelta64(lag, 'D')) for x in data['date']]
     data['date'] = data['date'].astype(str)
+    print(data['date'])
 
     return data
 

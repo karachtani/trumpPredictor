@@ -15,8 +15,7 @@ import pandas as pd
 import numpy as np
 import itertools
 
-
-for lag in range(1, 6):
+for lag in range(3, 6):
     data = pd.read_csv("lag"+str(lag)+".csv", index_col=0)
     def toint(output):
         return int(output)
@@ -47,7 +46,7 @@ for lag in range(1, 6):
                   'momentum': [.9, .95, .99],
                   'solver': ['sgd', 'adam', 'lbfgs'],
                   'alpha': 10.0 ** -np.arange(1, 7),
-                  'hidden_layer_sizes': np.arange(5, 12)
+                  'hidden_layer_sizes': np.arange(5, 10)
                   }
 
     clf = GridSearchCV(MLPClassifier(random_state=1),
