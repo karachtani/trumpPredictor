@@ -112,7 +112,8 @@ with open('results_svm.txt', "a") as log_file:
         log_file.write('%s\n' % out)  # save the message
         out ='best parameters found: ', clf.best_params_
         print(out)
-        log_file.write('%s\n' % out)  # save the message
+        for elem in out:
+            log_file.write('%s\n' % elem)  # save the message
         # print how our model looks after hyper-parameter tuning
         out = clf.best_estimator_
         print(out)

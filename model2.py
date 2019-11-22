@@ -67,15 +67,14 @@ with open('results_nnmodel2.txt', "a") as log_file:
 
         parameters = {'activation': ['relu'],
                       'batch_size': ['auto'],
-                      'beta_1': [0.9, 0.95],
-                      'beta_2': [0.999, 0.99],
+                      #'beta_1': [0.9, 0.95],
+                      #'beta_2': [0.999, 0.99],
                       'epsilon': [1e-08],
-                      'learning_rate': ['constant', 'adaptive'],
-                      'learning_rate_init': [.00001,.0001,.001],
+                      #'learning_rate': ['constant', 'adaptive'],
+                      #'learning_rate_init': [.00001,.0001,.001],
                       'max_iter': [5000], #[500,1000,1500],
-                      'momentum': [.9, .95, .99],
+                      #'momentum': [.9, .95, .99],
                       'solver': ['sgd', 'adam', 'lbfgs'],
-                      'solver': ['adam'],
                       'alpha': 10.0 ** -np.arange(1, 7),
                       'hidden_layer_sizes': [(5,2),(10,4),(2,5),(4,10),(4,4),(30,30,30),(5,5,2),(10,10,10),(100,),4,5,6,7,8,9]
                        #'hidden_layer_sizes': np.arange(5, 10)
@@ -102,7 +101,8 @@ with open('results_nnmodel2.txt', "a") as log_file:
         log_file.write('%s\n' % out)  # save the message
         out ='best parameters found: ', clf.best_params_
         print(out)
-        log_file.write('%s\n' % out)  # save the message
+        for elem in out:
+            log_file.write('%s\n' % elem)  # save the message
         # print how our model looks after hyper-parameter tuning
         out = clf.best_estimator_
         print(out)
