@@ -88,7 +88,7 @@ with open('results_svm.txt', "a") as log_file:
         print(X_test.shape)
         param_grid = {'C': [1e-5,1e-4, 1e-3, 1e-2, 0.1],# 1, 10, 100],
                           'gamma': ['auto','scale', 1e-5, 1e-4, 1e-3, 1e-2, 0.1, 1, 10, 100],
-                          'kernel': ['rbf','sigmoid','linear']} #poly
+                          'kernel': ['sigmoid']}
         print(sorted(SCORERS.keys()))
 
         clf = GridSearchCV(svm.SVC(probability=True),
@@ -148,9 +148,9 @@ with open('results_svm.txt', "a") as log_file:
         log_file.write('%s\n' % out)  # save the message
 
         #plot gridsearch results
-        #gs_plot(clf.cv_results_, 'lag'+str(lag)+'svm.png')
+        gs_plot(clf.cv_results_, 'lag'+str(lag)+'svm.png')
         #^^ this plotting function doesnt work if you're tuning > 2 things
-        
+
     log_file.close()
 
 with open('results_svm.txt', "a") as lf:
