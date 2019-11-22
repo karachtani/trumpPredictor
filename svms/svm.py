@@ -44,7 +44,7 @@ models = []
 
 with open('results_svm.txt', "a") as log_file:
     for lag in range(0, 6):
-        data = pd.read_csv("lag"+str(lag)+".csv", index_col=0)
+        data = pd.read_csv("../lag"+str(lag)+".csv", index_col=0)
         def toint(output):
             return int(output)
         def to_day(date):
@@ -84,10 +84,11 @@ with open('results_svm.txt', "a") as log_file:
         X_test[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']] = \
             sc.transform(X_test[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']])
         features = list(X_train.columns.values)
-
-        param_grid = {'C': [1e-5, 1e-4, 1e-3, 1e-2, 0.1, 1, 10, 100, 1000],
-                          'gamma': ['auto', 'scale', 1e-5, 1e-4, 1e-3, 1e-2, 0.1, 1, 10, 100],
-                          'kernel': ['rbf', 'sigmoid','linear']} #poly
+        print(X_train.shape)
+        print(X_test.shape)
+        param_grid = {'C': [1e-5,1e-4, 1e-3, 1e-2, 0.1],# 1, 10, 100],
+                          'gamma': ['auto','scale', 1e-5, 1e-4, 1e-3, 1e-2, 0.1, 1, 10, 100],
+                          'kernel': ['rbf','sigmoid','linear']} #poly
         print(sorted(SCORERS.keys()))
 
         clf = GridSearchCV(svm.SVC(probability=True),
@@ -98,11 +99,13 @@ with open('results_svm.txt', "a") as log_file:
                            refit=True,
                            verbose=0,  # 10 to see results
                            return_train_score=True,
-                           n_jobs=-1
+                           # n_jobs=multiprocessing.cpu_count() - 5
+                           # get error if using too much memory , njobs < cpu's availale -2
+                           #n_jobs=30
                            )  # higher verbose =more printed
 
         clf.fit(X_train, y_train)
-        models[lag] = clf
+        models.append(clf)
         # print best parameter after tuning
         out = "==================================================="
         print(out)
@@ -145,11 +148,13 @@ with open('results_svm.txt', "a") as log_file:
         log_file.write('%s\n' % out)  # save the message
 
         #plot gridsearch results
-        gs_plot(clf.cv_results, 'lag'+str(lag)+'svm.png')
+        gs_plot(clf.cv_results_, 'lag'+str(lag)+'svm.png')
+    log_file.close()
+
+with open('results_svm.txt', "a") as lf:
 
     #voting for each tweet now with each lag- not voting for daily yet
-    estimators=[('svm_0', models[0]), ('svm_1', models[1]), ('svm_2', models[2]), ('svm_3', models[3]),
-                ('svm_4', models[4])]
+    estimators=[('svm_0', models[0]), ('svm_1', models[1])]#, ('svm_2', models[2]), ('svm_3', models[3]),('svm_4', models[4])]
 
     lag_ensemble_clf = VotingClassifier(estimators=estimators, voting='soft')
     lag_ensemble_clf.fit(X_train, y_train)
@@ -158,9 +163,8 @@ with open('results_svm.txt', "a") as log_file:
     svm_2 = models[2]
     svm_3 = models[3]
     svm_4 = models[4]
-
-    for clf, label in zip([svm_0, svm_1, svm_2, svm_3, svm_4, lag_ensemble_clf], ['svm_0','svm_1','svm_2','svm_3','svm_4','Ensemble']):
-        scores = cross_val_score(clf, X_train, y_train, cv=5, scoring='f1_macro') #'accuracy')
+    for clf, label in zip([svm_0, svm_1, svm_2, svm_3, svm_4,lag_ensemble_clf], ['svm_0','svm_1','svm_2','svm_3','svm_4','Ensemble']):
+        scores = cross_val_score(clf, X_train, y_train, cv=3, scoring='f1_macro') #'accuracy')
 
     #get results from ensemble
     ensemble_predictions = lag_ensemble_clf.predict(X_test)
@@ -168,10 +172,9 @@ with open('results_svm.txt', "a") as log_file:
     # print classification report
     out = 'Ensemble Classification Report'
     print(out)
-    log_file.write('%s\n' % out)  # save the message
+    lf.write('%s\n' % out)  # save the message
     out = classification_report(y_test, ensemble_predictions)
     print(out)
-    log_file.write('%s\n' % out)  # save the message
-    log_file.close()
-
+    lf.write('%s\n' % out)  # save the message
+    lf.close()
 
