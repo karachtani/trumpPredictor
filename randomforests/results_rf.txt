@@ -1,0 +1,368 @@
+===================================================
+LAG 0
+===================================================
+LAG 0
+===================================================
+LAG 0
+best parameters found: 
+{'max_depth': 3, 'n_estimators': 10}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=3, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=10,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00      2121
+           1       0.54      1.00      0.70      2533
+
+    accuracy                           0.54      4654
+   macro avg       0.27      0.50      0.35      4654
+weighted avg       0.30      0.54      0.38      4654
+
+Confusion Matrix
+[[   0 2121]
+ [   0 2533]]
+Accuracy:
+0.5442629995702621
+===================================================
+LAG 0
+best parameters found: 
+{'max_depth': 3, 'n_estimators': 10}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=3, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=10,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.47      0.37      0.41      2121
+           1       0.55      0.65      0.60      2533
+
+    accuracy                           0.52      4654
+   macro avg       0.51      0.51      0.51      4654
+weighted avg       0.52      0.52      0.52      4654
+
+Confusion Matrix
+[[ 783 1338]
+ [ 874 1659]]
+Accuracy:
+0.5247099269445639
+===================================================
+LAG 0
+best parameters found: 
+{'max_depth': 3, 'n_estimators': 10}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=3, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=10,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00      2121
+           1       0.54      1.00      0.70      2533
+
+    accuracy                           0.54      4654
+   macro avg       0.27      0.50      0.35      4654
+weighted avg       0.30      0.54      0.38      4654
+
+Confusion Matrix
+[[   0 2121]
+ [   0 2533]]
+Accuracy:
+0.5442629995702621
+===================================================
+LAG 1
+best parameters found: 
+{'max_depth': 3, 'n_estimators': 10}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=3, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=10,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.41      0.21      0.28      2031
+           1       0.56      0.76      0.64      2623
+
+    accuracy                           0.52      4654
+   macro avg       0.48      0.49      0.46      4654
+weighted avg       0.49      0.52      0.48      4654
+
+Confusion Matrix
+[[ 433 1598]
+ [ 625 1998]]
+Accuracy:
+0.5223463687150838
+===================================================
+LAG 2
+best parameters found: 
+{'max_depth': 3, 'n_estimators': 10}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=3, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=10,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.41      0.14      0.21      2013
+           1       0.56      0.85      0.68      2641
+
+    accuracy                           0.54      4654
+   macro avg       0.49      0.49      0.44      4654
+weighted avg       0.50      0.54      0.47      4654
+
+Confusion Matrix
+[[ 280 1733]
+ [ 400 2241]]
+Accuracy:
+0.5416845724108293
+===================================================
+LAG 3
+best parameters found: 
+{'max_depth': 3, 'n_estimators': 10}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=3, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=10,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.35      0.15      0.21      1986
+           1       0.56      0.79      0.65      2668
+
+    accuracy                           0.52      4654
+   macro avg       0.45      0.47      0.43      4654
+weighted avg       0.47      0.52      0.46      4654
+
+Confusion Matrix
+[[ 304 1682]
+ [ 562 2106]]
+Accuracy:
+0.5178341211860765
+===================================================
+LAG 4
+best parameters found: 
+{'max_depth': 3, 'n_estimators': 10}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=3, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=10,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.21      0.16      0.18      1815
+           1       0.54      0.62      0.58      2839
+
+    accuracy                           0.44      4654
+   macro avg       0.37      0.39      0.38      4654
+weighted avg       0.41      0.44      0.42      4654
+
+Confusion Matrix
+[[ 283 1532]
+ [1074 1765]]
+Accuracy:
+0.44005156854318866
+===================================================
+LAG 5
+best parameters found: 
+{'max_depth': 3, 'n_estimators': 10}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=3, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=10,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.35      0.24      0.28      1995
+           1       0.54      0.67      0.60      2659
+
+    accuracy                           0.48      4654
+   macro avg       0.44      0.45      0.44      4654
+weighted avg       0.46      0.48      0.46      4654
+
+Confusion Matrix
+[[ 470 1525]
+ [ 887 1772]]
+Accuracy:
+0.48173614095401807
+===================================================
+LAG 0
+best parameters found: 
+{'max_depth': 20, 'n_estimators': 500}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=20, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=500,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.46      0.43      0.44      2121
+           1       0.55      0.58      0.56      2533
+
+    accuracy                           0.51      4654
+   macro avg       0.50      0.50      0.50      4654
+weighted avg       0.51      0.51      0.51      4654
+
+Confusion Matrix
+[[ 902 1219]
+ [1065 1468]]
+Accuracy:
+0.5092393639879673
+===================================================
+LAG 1
+best parameters found: 
+{'max_depth': 20, 'n_estimators': 500}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=20, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=500,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.42      0.35      0.38      2031
+           1       0.55      0.62      0.59      2623
+
+    accuracy                           0.50      4654
+   macro avg       0.48      0.49      0.48      4654
+weighted avg       0.49      0.50      0.50      4654
+
+Confusion Matrix
+[[ 707 1324]
+ [ 988 1635]]
+Accuracy:
+0.5032230339492909
+===================================================
+LAG 2
+best parameters found: 
+{'max_depth': 20, 'n_estimators': 500}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=20, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=500,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.46      0.74      0.56      2013
+           1       0.62      0.32      0.43      2641
+
+    accuracy                           0.51      4654
+   macro avg       0.54      0.53      0.50      4654
+weighted avg       0.55      0.51      0.49      4654
+
+Confusion Matrix
+[[1495  518]
+ [1785  856]]
+Accuracy:
+0.5051568543188655
+===================================================
+LAG 3
+best parameters found: 
+{'max_depth': 20, 'n_estimators': 200}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=20, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=200,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.39      0.43      0.41      1986
+           1       0.54      0.49      0.51      2668
+
+    accuracy                           0.47      4654
+   macro avg       0.46      0.46      0.46      4654
+weighted avg       0.47      0.47      0.47      4654
+
+Confusion Matrix
+[[ 861 1125]
+ [1359 1309]]
+Accuracy:
+0.4662655779974216
+===================================================
+LAG 4
+best parameters found: 
+{'max_depth': 20, 'n_estimators': 500}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=20, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=500,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.54      0.11      0.19      1815
+           1       0.62      0.94      0.75      2839
+
+    accuracy                           0.62      4654
+   macro avg       0.58      0.53      0.47      4654
+weighted avg       0.59      0.62      0.53      4654
+
+Confusion Matrix
+[[ 206 1609]
+ [ 172 2667]]
+Accuracy:
+0.61731843575419
+===================================================
+LAG 5
+best parameters found: 
+{'max_depth': 20, 'n_estimators': 200}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+                       max_depth=20, max_features='auto', max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=1, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=200,
+                       n_jobs=None, oob_score=False, random_state=None,
+                       verbose=0, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.45      0.47      0.46      1995
+           1       0.59      0.57      0.58      2659
+
+    accuracy                           0.53      4654
+   macro avg       0.52      0.52      0.52      4654
+weighted avg       0.53      0.53      0.53      4654
+
+Confusion Matrix
+[[ 943 1052]
+ [1132 1527]]
+Accuracy:
+0.5307262569832403
