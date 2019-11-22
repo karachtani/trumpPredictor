@@ -148,7 +148,9 @@ with open('results_svm.txt', "a") as log_file:
         log_file.write('%s\n' % out)  # save the message
 
         #plot gridsearch results
-        gs_plot(clf.cv_results_, 'lag'+str(lag)+'svm.png')
+        #gs_plot(clf.cv_results_, 'lag'+str(lag)+'svm.png')
+        #^^ this plotting function doesnt work if you're tuning > 2 things
+        
     log_file.close()
 
 with open('results_svm.txt', "a") as lf:
