@@ -131,7 +131,8 @@ stock_plus_tweet = pd.merge(stock_plus_tweet, number_of_tweets, how='left', on='
 stock_plus_tweet = stock_plus_tweet[['date','time','retweet_count',
                                      'neg', 'neu', 'pos', 'cmpd',
                                      'IsTradingDay','is_retweet','numTweets','Output']]
-
+stock_plus_tweet.loc[stock_plus_tweet['is_retweet'] == 'True', 'is_retweet'] = 1
+stock_plus_tweet.loc[stock_plus_tweet['is_retweet'] == 'False', 'is_retweet'] = 0
 stock_plus_tweet.to_csv("tweets_stock_data2.csv", index=True)
 
 
