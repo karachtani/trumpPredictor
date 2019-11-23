@@ -1,0 +1,2192 @@
+===================================================
+LAG 0
+===================================================
+LAG 0
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.1, 'batch_size': 'auto', 'beta_1': 0.95, 'beta_2': 0.99, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 9, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': True, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.47      0.14      0.21      2121
+           1       0.55      0.87      0.67      2533
+
+    accuracy                           0.54      4654
+   macro avg       0.51      0.50      0.44      4654
+weighted avg       0.51      0.54      0.46      4654
+
+Confusion Matrix
+[[ 288 1833]
+ [ 325 2208]]
+Accuracy:
+0.5363128491620112
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.75      0.09      0.16        98
+           1       0.57      0.97      0.72       119
+
+    accuracy                           0.58       217
+   macro avg       0.66      0.53      0.44       217
+weighted avg       0.65      0.58      0.47       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.75      0.09      0.16        98
+           1       0.57      0.97      0.72       119
+
+    accuracy                           0.58       217
+   macro avg       0.66      0.53      0.44       217
+weighted avg       0.65      0.58      0.47       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.75      0.09      0.16        98
+           1       0.57      0.97      0.72       119
+
+    accuracy                           0.58       217
+   macro avg       0.66      0.53      0.44       217
+weighted avg       0.65      0.58      0.47       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.75      0.09      0.16        98
+           1       0.57      0.97      0.72       119
+
+    accuracy                           0.58       217
+   macro avg       0.66      0.53      0.44       217
+weighted avg       0.65      0.58      0.47       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.75      0.09      0.16        98
+           1       0.57      0.97      0.72       119
+
+    accuracy                           0.58       217
+   macro avg       0.66      0.53      0.44       217
+weighted avg       0.65      0.58      0.47       217
+
+===================================================
+LAG 1
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.001, 'batch_size': 'auto', 'beta_1': 0.95, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 5, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': True, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.41      0.08      0.13      2031
+           1       0.56      0.91      0.70      2623
+
+    accuracy                           0.55      4654
+   macro avg       0.49      0.50      0.41      4654
+weighted avg       0.50      0.55      0.45      4654
+
+Confusion Matrix
+[[ 157 1874]
+ [ 224 2399]]
+Accuracy:
+0.5492049849591749
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       1.00      0.01      0.02        98
+           1       0.55      1.00      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.78      0.51      0.37       217
+weighted avg       0.75      0.55      0.40       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        98
+           1       0.55      0.99      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.36       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        98
+           1       0.55      0.99      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.36       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        98
+           1       0.55      0.99      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.36       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        98
+           1       0.55      0.99      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.36       217
+weighted avg       0.53      0.55      0.40       217
+
+===================================================
+LAG 2
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.1, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 6, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': True, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.44      0.24      0.31      2013
+           1       0.57      0.77      0.65      2641
+
+    accuracy                           0.54      4654
+   macro avg       0.51      0.50      0.48      4654
+weighted avg       0.51      0.54      0.51      4654
+
+Confusion Matrix
+[[ 479 1534]
+ [ 609 2032]]
+Accuracy:
+0.5395358831113021
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.54      0.21      0.30        97
+           1       0.57      0.86      0.69       120
+
+    accuracy                           0.57       217
+   macro avg       0.56      0.53      0.49       217
+weighted avg       0.56      0.57      0.51       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.51      0.23      0.31        97
+           1       0.57      0.82      0.67       120
+
+    accuracy                           0.56       217
+   macro avg       0.54      0.53      0.49       217
+weighted avg       0.54      0.56      0.51       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.51      0.23      0.31        97
+           1       0.57      0.82      0.67       120
+
+    accuracy                           0.56       217
+   macro avg       0.54      0.53      0.49       217
+weighted avg       0.54      0.56      0.51       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.51      0.23      0.31        97
+           1       0.57      0.82      0.67       120
+
+    accuracy                           0.56       217
+   macro avg       0.54      0.53      0.49       217
+weighted avg       0.54      0.56      0.51       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.51      0.23      0.31        97
+           1       0.57      0.82      0.67       120
+
+    accuracy                           0.56       217
+   macro avg       0.54      0.53      0.49       217
+weighted avg       0.54      0.56      0.51       217
+
+===================================================
+LAG 3
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.1, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 6, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.99, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': True, 'solver': 'sgd', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.54      0.02      0.04      1986
+           1       0.58      0.99      0.73      2668
+
+    accuracy                           0.57      4654
+   macro avg       0.56      0.50      0.38      4654
+weighted avg       0.56      0.57      0.43      4654
+
+Confusion Matrix
+[[  38 1948]
+ [  32 2636]]
+Accuracy:
+0.5745595186935969
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.98      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.27      0.49      0.35       217
+weighted avg       0.30      0.54      0.39       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.25      0.01      0.02        97
+           1       0.55      0.97      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.40      0.49      0.36       217
+weighted avg       0.42      0.54      0.40       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.25      0.01      0.02        97
+           1       0.55      0.97      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.40      0.49      0.36       217
+weighted avg       0.42      0.54      0.40       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.25      0.01      0.02        97
+           1       0.55      0.97      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.40      0.49      0.36       217
+weighted avg       0.42      0.54      0.40       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.25      0.01      0.02        97
+           1       0.55      0.97      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.40      0.49      0.36       217
+weighted avg       0.42      0.54      0.40       217
+
+===================================================
+LAG 4
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.1, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 9, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': True, 'solver': 'sgd', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.40      0.24      0.30      1815
+           1       0.61      0.77      0.68      2839
+
+    accuracy                           0.56      4654
+   macro avg       0.51      0.50      0.49      4654
+weighted avg       0.53      0.56      0.53      4654
+
+Confusion Matrix
+[[ 433 1382]
+ [ 651 2188]]
+Accuracy:
+0.5631714654061023
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.44      0.07      0.12        97
+           1       0.55      0.93      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.49      0.50      0.41       217
+weighted avg       0.50      0.54      0.44       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.45      0.09      0.15        97
+           1       0.55      0.91      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.50      0.50      0.42       217
+weighted avg       0.51      0.54      0.45       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.45      0.09      0.15        97
+           1       0.55      0.91      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.50      0.50      0.42       217
+weighted avg       0.51      0.54      0.45       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.45      0.09      0.15        97
+           1       0.55      0.91      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.50      0.50      0.42       217
+weighted avg       0.51      0.54      0.45       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.45      0.09      0.15        97
+           1       0.55      0.91      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.50      0.50      0.42       217
+weighted avg       0.51      0.54      0.45       217
+
+===================================================
+LAG 5
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.01, 'batch_size': 'auto', 'beta_1': 0.95, 'beta_2': 0.99, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 7, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': True, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.31      0.09      0.13      1995
+           1       0.55      0.85      0.67      2659
+
+    accuracy                           0.52      4654
+   macro avg       0.43      0.47      0.40      4654
+weighted avg       0.45      0.52      0.44      4654
+
+Confusion Matrix
+[[ 172 1823]
+ [ 390 2269]]
+Accuracy:
+0.524495058014611
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.29      0.02      0.04        97
+           1       0.55      0.96      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.42      0.49      0.37       217
+weighted avg       0.43      0.54      0.40       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.29      0.02      0.04        97
+           1       0.55      0.96      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.42      0.49      0.37       217
+weighted avg       0.43      0.54      0.40       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.29      0.02      0.04        97
+           1       0.55      0.96      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.42      0.49      0.37       217
+weighted avg       0.43      0.54      0.40       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.29      0.02      0.04        97
+           1       0.55      0.96      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.42      0.49      0.37       217
+weighted avg       0.43      0.54      0.40       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.29      0.02      0.04        97
+           1       0.55      0.96      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.42      0.49      0.37       217
+weighted avg       0.43      0.54      0.40       217
+
+===================================================
+LAG 0
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.1, 'batch_size': 'auto', 'beta_1': 0.95, 'beta_2': 0.99, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 9, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.48      0.10      0.16      2121
+           1       0.55      0.91      0.68      2533
+
+    accuracy                           0.54      4654
+   macro avg       0.51      0.50      0.42      4654
+weighted avg       0.52      0.54      0.44      4654
+
+Confusion Matrix
+[[ 203 1918]
+ [ 220 2313]]
+Accuracy:
+0.5406102277610657
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.02      0.04        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.54       217
+   macro avg       0.44      0.49      0.37       217
+weighted avg       0.45      0.54      0.40       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.02      0.04        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.54       217
+   macro avg       0.44      0.49      0.37       217
+weighted avg       0.45      0.54      0.40       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.02      0.04        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.54       217
+   macro avg       0.44      0.49      0.37       217
+weighted avg       0.45      0.54      0.40       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.02      0.04        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.54       217
+   macro avg       0.44      0.49      0.37       217
+weighted avg       0.45      0.54      0.40       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.02      0.04        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.54       217
+   macro avg       0.44      0.49      0.37       217
+weighted avg       0.45      0.54      0.40       217
+
+===================================================
+LAG 1
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.001, 'batch_size': 'auto', 'beta_1': 0.95, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 5, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.41      0.09      0.15      2031
+           1       0.56      0.90      0.69      2623
+
+    accuracy                           0.55      4654
+   macro avg       0.49      0.50      0.42      4654
+weighted avg       0.50      0.55      0.45      4654
+
+Confusion Matrix
+[[ 183 1848]
+ [ 258 2365]]
+Accuracy:
+0.547486033519553
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.67      0.02      0.04        98
+           1       0.55      0.99      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.61      0.51      0.37       217
+weighted avg       0.60      0.55      0.41       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.02      0.04        98
+           1       0.55      0.98      0.70       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.02      0.04        98
+           1       0.55      0.98      0.70       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.02      0.04        98
+           1       0.55      0.98      0.70       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.02      0.04        98
+           1       0.55      0.98      0.70       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+===================================================
+LAG 2
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.1, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 6, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.45      0.06      0.11      2013
+           1       0.57      0.94      0.71      2641
+
+    accuracy                           0.56      4654
+   macro avg       0.51      0.50      0.41      4654
+weighted avg       0.52      0.56      0.45      4654
+
+Confusion Matrix
+[[ 129 1884]
+ [ 158 2483]]
+Accuracy:
+0.5612376450365277
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.29      0.02      0.04        97
+           1       0.55      0.96      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.42      0.49      0.37       217
+weighted avg       0.43      0.54      0.40       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.38      0.05      0.09        97
+           1       0.55      0.93      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.47      0.49      0.39       217
+weighted avg       0.48      0.54      0.42       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.38      0.05      0.09        97
+           1       0.55      0.93      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.47      0.49      0.39       217
+weighted avg       0.48      0.54      0.42       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.38      0.05      0.09        97
+           1       0.55      0.93      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.47      0.49      0.39       217
+weighted avg       0.48      0.54      0.42       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.38      0.05      0.09        97
+           1       0.55      0.93      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.47      0.49      0.39       217
+weighted avg       0.48      0.54      0.42       217
+
+===================================================
+LAG 3
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.1, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 6, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.99, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'sgd', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.36      0.00      0.00      1986
+           1       0.57      1.00      0.73      2668
+
+    accuracy                           0.57      4654
+   macro avg       0.47      0.50      0.37      4654
+weighted avg       0.48      0.57      0.42      4654
+
+Confusion Matrix
+[[   4 1982]
+ [   7 2661]]
+Accuracy:
+0.5726256983240223
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.28      0.50      0.35       217
+weighted avg       0.30      0.55      0.39       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.98      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.27      0.49      0.35       217
+weighted avg       0.30      0.54      0.39       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.98      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.27      0.49      0.35       217
+weighted avg       0.30      0.54      0.39       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.98      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.27      0.49      0.35       217
+weighted avg       0.30      0.54      0.39       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.98      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.27      0.49      0.35       217
+weighted avg       0.30      0.54      0.39       217
+
+===================================================
+LAG 4
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.1, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 9, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'sgd', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.40      0.24      0.30      1815
+           1       0.61      0.76      0.68      2839
+
+    accuracy                           0.56      4654
+   macro avg       0.50      0.50      0.49      4654
+weighted avg       0.53      0.56      0.53      4654
+
+Confusion Matrix
+[[ 439 1376]
+ [ 671 2168]]
+Accuracy:
+0.5601633003867641
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.44      0.07      0.12        97
+           1       0.55      0.93      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.49      0.50      0.41       217
+weighted avg       0.50      0.54      0.44       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.48      0.10      0.17        97
+           1       0.56      0.91      0.69       120
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.51      0.43       217
+weighted avg       0.52      0.55      0.46       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.48      0.10      0.17        97
+           1       0.56      0.91      0.69       120
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.51      0.43       217
+weighted avg       0.52      0.55      0.46       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.48      0.10      0.17        97
+           1       0.56      0.91      0.69       120
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.51      0.43       217
+weighted avg       0.52      0.55      0.46       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.48      0.10      0.17        97
+           1       0.56      0.91      0.69       120
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.51      0.43       217
+weighted avg       0.52      0.55      0.46       217
+
+===================================================
+LAG 5
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.01, 'batch_size': 'auto', 'beta_1': 0.95, 'beta_2': 0.99, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 7, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0.1, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.34      0.05      0.08      1995
+           1       0.57      0.93      0.70      2659
+
+    accuracy                           0.55      4654
+   macro avg       0.45      0.49      0.39      4654
+weighted avg       0.47      0.55      0.44      4654
+
+Confusion Matrix
+[[  94 1901]
+ [ 186 2473]]
+Accuracy:
+0.5515685431886549
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+===================================================
+LAG 0
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.1, 'batch_size': 'auto', 'beta_1': 0.95, 'beta_2': 0.99, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 9, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.47      0.08      0.14      2121
+           1       0.55      0.92      0.69      2533
+
+    accuracy                           0.54      4654
+   macro avg       0.51      0.50      0.41      4654
+weighted avg       0.51      0.54      0.44      4654
+
+Confusion Matrix
+[[ 173 1948]
+ [ 195 2338]]
+Accuracy:
+0.5395358831113021
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.02      0.04        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.54       217
+   macro avg       0.44      0.49      0.37       217
+weighted avg       0.45      0.54      0.40       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.02      0.04        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.54       217
+   macro avg       0.44      0.49      0.37       217
+weighted avg       0.45      0.54      0.40       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.02      0.04        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.54       217
+   macro avg       0.44      0.49      0.37       217
+weighted avg       0.45      0.54      0.40       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.02      0.04        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.54       217
+   macro avg       0.44      0.49      0.37       217
+weighted avg       0.45      0.54      0.40       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.02      0.04        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.54       217
+   macro avg       0.44      0.49      0.37       217
+weighted avg       0.45      0.54      0.40       217
+
+===================================================
+LAG 1
+Model Parameters: 
+{'activation': 'relu', 'alpha': 1e-06, 'batch_size': 'auto', 'beta_1': 0.95, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 5, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.42      0.07      0.12      2031
+           1       0.56      0.92      0.70      2623
+
+    accuracy                           0.55      4654
+   macro avg       0.49      0.50      0.41      4654
+weighted avg       0.50      0.55      0.45      4654
+
+Confusion Matrix
+[[ 144 1887]
+ [ 199 2424]]
+Accuracy:
+0.5517834121186076
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       1.00      0.01      0.02        98
+           1       0.55      1.00      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.78      0.51      0.37       217
+weighted avg       0.75      0.55      0.40       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        98
+           1       0.55      0.99      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.36       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        98
+           1       0.55      0.99      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.36       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        98
+           1       0.55      0.99      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.36       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        98
+           1       0.55      0.99      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.36       217
+weighted avg       0.53      0.55      0.40       217
+
+===================================================
+LAG 2
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.1, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 6, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.48      0.07      0.12      2013
+           1       0.57      0.94      0.71      2641
+
+    accuracy                           0.56      4654
+   macro avg       0.52      0.51      0.42      4654
+weighted avg       0.53      0.56      0.46      4654
+
+Confusion Matrix
+[[ 144 1869]
+ [ 159 2482]]
+Accuracy:
+0.5642458100558659
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.03      0.06        97
+           1       0.55      0.95      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.44      0.49      0.38       217
+weighted avg       0.45      0.54      0.41       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.43      0.06      0.11        97
+           1       0.55      0.93      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.49      0.50      0.40       217
+weighted avg       0.50      0.54      0.43       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.43      0.06      0.11        97
+           1       0.55      0.93      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.49      0.50      0.40       217
+weighted avg       0.50      0.54      0.43       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.43      0.06      0.11        97
+           1       0.55      0.93      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.49      0.50      0.40       217
+weighted avg       0.50      0.54      0.43       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.43      0.06      0.11        97
+           1       0.55      0.93      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.49      0.50      0.40       217
+weighted avg       0.50      0.54      0.43       217
+
+===================================================
+LAG 3
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.1, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 6, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.99, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'sgd', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.36      0.00      0.00      1986
+           1       0.57      1.00      0.73      2668
+
+    accuracy                           0.57      4654
+   macro avg       0.47      0.50      0.37      4654
+weighted avg       0.48      0.57      0.42      4654
+
+Confusion Matrix
+[[   4 1982]
+ [   7 2661]]
+Accuracy:
+0.5726256983240223
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.28      0.50      0.35       217
+weighted avg       0.30      0.55      0.39       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.98      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.27      0.49      0.35       217
+weighted avg       0.30      0.54      0.39       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.98      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.27      0.49      0.35       217
+weighted avg       0.30      0.54      0.39       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.98      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.27      0.49      0.35       217
+weighted avg       0.30      0.54      0.39       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.98      0.70       120
+
+    accuracy                           0.54       217
+   macro avg       0.27      0.49      0.35       217
+weighted avg       0.30      0.54      0.39       217
+
+===================================================
+LAG 4
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.1, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 9, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'sgd', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.39      0.24      0.30      1815
+           1       0.61      0.76      0.68      2839
+
+    accuracy                           0.56      4654
+   macro avg       0.50      0.50      0.49      4654
+weighted avg       0.53      0.56      0.53      4654
+
+Confusion Matrix
+[[ 437 1378]
+ [ 670 2169]]
+Accuracy:
+0.5599484314568114
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.44      0.07      0.12        97
+           1       0.55      0.93      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.49      0.50      0.41       217
+weighted avg       0.50      0.54      0.44       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.45      0.09      0.15        97
+           1       0.55      0.91      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.50      0.50      0.42       217
+weighted avg       0.51      0.54      0.45       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.45      0.09      0.15        97
+           1       0.55      0.91      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.50      0.50      0.42       217
+weighted avg       0.51      0.54      0.45       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.45      0.09      0.15        97
+           1       0.55      0.91      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.50      0.50      0.42       217
+weighted avg       0.51      0.54      0.45       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.45      0.09      0.15        97
+           1       0.55      0.91      0.69       120
+
+    accuracy                           0.54       217
+   macro avg       0.50      0.50      0.42       217
+weighted avg       0.51      0.54      0.45       217
+
+===================================================
+LAG 5
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.01, 'batch_size': 'auto', 'beta_1': 0.95, 'beta_2': 0.99, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': 7, 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 500, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.32      0.05      0.08      1995
+           1       0.56      0.93      0.70      2659
+
+    accuracy                           0.55      4654
+   macro avg       0.44      0.49      0.39      4654
+weighted avg       0.46      0.55      0.44      4654
+
+Confusion Matrix
+[[  94 1901]
+ [ 196 2463]]
+Accuracy:
+0.5494198538891276
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+===================================================
+LAG 0
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (10, 10, 10), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 5000, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.42      0.08      0.14      2121
+           1       0.54      0.90      0.68      2533
+
+    accuracy                           0.53      4654
+   macro avg       0.48      0.49      0.41      4654
+weighted avg       0.49      0.53      0.43      4654
+
+Confusion Matrix
+[[ 179 1942]
+ [ 243 2290]]
+Accuracy:
+0.5305113880532875
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.67      0.02      0.04        98
+           1       0.55      0.99      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.61      0.51      0.37       217
+weighted avg       0.60      0.55      0.41       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.67      0.02      0.04        98
+           1       0.55      0.99      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.61      0.51      0.37       217
+weighted avg       0.60      0.55      0.41       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.67      0.02      0.04        98
+           1       0.55      0.99      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.61      0.51      0.37       217
+weighted avg       0.60      0.55      0.41       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.67      0.02      0.04        98
+           1       0.55      0.99      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.61      0.51      0.37       217
+weighted avg       0.60      0.55      0.41       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.67      0.02      0.04        98
+           1       0.55      0.99      0.71       119
+
+    accuracy                           0.55       217
+   macro avg       0.61      0.51      0.37       217
+weighted avg       0.60      0.55      0.41       217
+
+===================================================
+LAG 1
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (10, 10, 10), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 5000, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.42      0.52      0.47      2031
+           1       0.55      0.46      0.50      2623
+
+    accuracy                           0.48      4654
+   macro avg       0.49      0.49      0.48      4654
+weighted avg       0.49      0.48      0.48      4654
+
+Confusion Matrix
+[[1047  984]
+ [1424 1199]]
+Accuracy:
+0.48259561667382894
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.45      0.35      0.39        98
+           1       0.55      0.66      0.60       119
+
+    accuracy                           0.52       217
+   macro avg       0.50      0.50      0.50       217
+weighted avg       0.51      0.52      0.51       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.43      0.36      0.39        98
+           1       0.54      0.61      0.57       119
+
+    accuracy                           0.50       217
+   macro avg       0.48      0.49      0.48       217
+weighted avg       0.49      0.50      0.49       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.43      0.36      0.39        98
+           1       0.54      0.61      0.57       119
+
+    accuracy                           0.50       217
+   macro avg       0.48      0.49      0.48       217
+weighted avg       0.49      0.50      0.49       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.43      0.36      0.39        98
+           1       0.54      0.61      0.57       119
+
+    accuracy                           0.50       217
+   macro avg       0.48      0.49      0.48       217
+weighted avg       0.49      0.50      0.49       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.43      0.36      0.39        98
+           1       0.54      0.61      0.57       119
+
+    accuracy                           0.50       217
+   macro avg       0.48      0.49      0.48       217
+weighted avg       0.49      0.50      0.49       217
+
+===================================================
+LAG 2
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (10, 10, 10), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 5000, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.50      0.17      0.26      2013
+           1       0.58      0.87      0.70      2641
+
+    accuracy                           0.57      4654
+   macro avg       0.54      0.52      0.48      4654
+weighted avg       0.55      0.57      0.51      4654
+
+Confusion Matrix
+[[ 350 1663]
+ [ 345 2296]]
+Accuracy:
+0.5685431886549205
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.07      0.13        97
+           1       0.56      0.94      0.70       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.51      0.41       217
+weighted avg       0.53      0.55      0.44       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.07      0.13        97
+           1       0.56      0.94      0.70       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.51      0.41       217
+weighted avg       0.53      0.55      0.44       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.07      0.13        97
+           1       0.56      0.94      0.70       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.51      0.41       217
+weighted avg       0.53      0.55      0.44       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.07      0.13        97
+           1       0.56      0.94      0.70       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.51      0.41       217
+weighted avg       0.53      0.55      0.44       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.07      0.13        97
+           1       0.56      0.94      0.70       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.51      0.41       217
+weighted avg       0.53      0.55      0.44       217
+
+===================================================
+LAG 3
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (10, 10, 10), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 5000, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.45      0.05      0.09      1986
+           1       0.57      0.95      0.72      2668
+
+    accuracy                           0.57      4654
+   macro avg       0.51      0.50      0.41      4654
+weighted avg       0.52      0.57      0.45      4654
+
+Confusion Matrix
+[[ 103 1883]
+ [ 124 2544]]
+Accuracy:
+0.5687580575848732
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.01      0.02        97
+           1       0.55      0.98      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.44      0.50      0.36       217
+weighted avg       0.45      0.55      0.40       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.01      0.02        97
+           1       0.55      0.98      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.44      0.50      0.36       217
+weighted avg       0.45      0.55      0.40       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.01      0.02        97
+           1       0.55      0.98      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.44      0.50      0.36       217
+weighted avg       0.45      0.55      0.40       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.01      0.02        97
+           1       0.55      0.98      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.44      0.50      0.36       217
+weighted avg       0.45      0.55      0.40       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.33      0.01      0.02        97
+           1       0.55      0.98      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.44      0.50      0.36       217
+weighted avg       0.45      0.55      0.40       217
+
+===================================================
+LAG 4
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (10, 10, 10), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 5000, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.47      0.03      0.05      1815
+           1       0.61      0.98      0.75      2839
+
+    accuracy                           0.61      4654
+   macro avg       0.54      0.50      0.40      4654
+weighted avg       0.56      0.61      0.48      4654
+
+Confusion Matrix
+[[  51 1764]
+ [  57 2782]]
+Accuracy:
+0.6087236785560808
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.02      0.04        97
+           1       0.55      0.98      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.41       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.40      0.02      0.04        97
+           1       0.55      0.97      0.70       120
+
+    accuracy                           0.55       217
+   macro avg       0.48      0.50      0.37       217
+weighted avg       0.48      0.55      0.41       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.40      0.02      0.04        97
+           1       0.55      0.97      0.70       120
+
+    accuracy                           0.55       217
+   macro avg       0.48      0.50      0.37       217
+weighted avg       0.48      0.55      0.41       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.40      0.02      0.04        97
+           1       0.55      0.97      0.70       120
+
+    accuracy                           0.55       217
+   macro avg       0.48      0.50      0.37       217
+weighted avg       0.48      0.55      0.41       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.40      0.02      0.04        97
+           1       0.55      0.97      0.70       120
+
+    accuracy                           0.55       217
+   macro avg       0.48      0.50      0.37       217
+weighted avg       0.48      0.55      0.41       217
+
+===================================================
+LAG 5
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (10, 10, 10), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 5000, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.36      0.14      0.20      1995
+           1       0.56      0.81      0.66      2659
+
+    accuracy                           0.52      4654
+   macro avg       0.46      0.48      0.43      4654
+weighted avg       0.47      0.52      0.46      4654
+
+Confusion Matrix
+[[ 275 1720]
+ [ 497 2162]]
+Accuracy:
+0.5236355822948001
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.22      0.02      0.04        97
+           1       0.54      0.94      0.69       120
+
+    accuracy                           0.53       217
+   macro avg       0.38      0.48      0.36       217
+weighted avg       0.40      0.53      0.40       217
+
+-- Cutoff 0
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.22      0.02      0.04        97
+           1       0.54      0.94      0.69       120
+
+    accuracy                           0.53       217
+   macro avg       0.38      0.48      0.36       217
+weighted avg       0.40      0.53      0.40       217
+
+-- Cutoff 0.1
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.22      0.02      0.04        97
+           1       0.54      0.94      0.69       120
+
+    accuracy                           0.53       217
+   macro avg       0.38      0.48      0.36       217
+weighted avg       0.40      0.53      0.40       217
+
+-- Cutoff 0.9
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.22      0.02      0.04        97
+           1       0.54      0.94      0.69       120
+
+    accuracy                           0.53       217
+   macro avg       0.38      0.48      0.36       217
+weighted avg       0.40      0.53      0.40       217
+
+-- Cutoff 0.2
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.22      0.02      0.04        97
+           1       0.54      0.94      0.69       120
+
+    accuracy                           0.53       217
+   macro avg       0.38      0.48      0.36       217
+weighted avg       0.40      0.53      0.40       217
+
+===================================================
+LAG 0
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (10, 10, 10), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 5000, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.44      0.15      0.22      2121
+           1       0.54      0.84      0.66      2533
+
+    accuracy                           0.53      4654
+   macro avg       0.49      0.50      0.44      4654
+weighted avg       0.50      0.53      0.46      4654
+
+Confusion Matrix
+[[ 315 1806]
+ [ 401 2132]]
+Accuracy:
+0.5257842715943275
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.03      0.06        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.38       217
+weighted avg       0.53      0.55      0.41       217
+
+-- Cutoff 0
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.03      0.06        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.38       217
+weighted avg       0.53      0.55      0.41       217
+
+-- Cutoff 0.1
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.03      0.06        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.38       217
+weighted avg       0.53      0.55      0.41       217
+
+-- Cutoff 0.9
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.03      0.06        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.38       217
+weighted avg       0.53      0.55      0.41       217
+
+-- Cutoff 0.2
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.03      0.06        98
+           1       0.55      0.97      0.70       119
+
+    accuracy                           0.55       217
+   macro avg       0.52      0.50      0.38       217
+weighted avg       0.53      0.55      0.41       217
+
+===================================================
+LAG 1
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (10, 10, 10), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 5000, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.42      0.49      0.45      2031
+           1       0.55      0.47      0.51      2623
+
+    accuracy                           0.48      4654
+   macro avg       0.48      0.48      0.48      4654
+weighted avg       0.49      0.48      0.48      4654
+
+Confusion Matrix
+[[1002 1029]
+ [1387 1236]]
+Accuracy:
+0.48087666523420713
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.43      0.31      0.36        98
+           1       0.54      0.66      0.59       119
+
+    accuracy                           0.50       217
+   macro avg       0.48      0.48      0.48       217
+weighted avg       0.49      0.50      0.49       217
+
+-- Cutoff 0
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.45      0.35      0.39        98
+           1       0.55      0.65      0.59       119
+
+    accuracy                           0.51       217
+   macro avg       0.50      0.50      0.49       217
+weighted avg       0.50      0.51      0.50       217
+
+-- Cutoff 0.1
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.45      0.35      0.39        98
+           1       0.55      0.65      0.59       119
+
+    accuracy                           0.51       217
+   macro avg       0.50      0.50      0.49       217
+weighted avg       0.50      0.51      0.50       217
+
+-- Cutoff 0.9
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.45      0.35      0.39        98
+           1       0.55      0.65      0.59       119
+
+    accuracy                           0.51       217
+   macro avg       0.50      0.50      0.49       217
+weighted avg       0.50      0.51      0.50       217
+
+-- Cutoff 0.2
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.45      0.35      0.39        98
+           1       0.55      0.65      0.59       119
+
+    accuracy                           0.51       217
+   macro avg       0.50      0.50      0.49       217
+weighted avg       0.50      0.51      0.50       217
+
+===================================================
+LAG 2
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (10, 10, 10), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 5000, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.48      0.12      0.19      2013
+           1       0.57      0.90      0.70      2641
+
+    accuracy                           0.56      4654
+   macro avg       0.53      0.51      0.45      4654
+weighted avg       0.53      0.56      0.48      4654
+
+Confusion Matrix
+[[ 241 1772]
+ [ 258 2383]]
+Accuracy:
+0.5638160721959604
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.09      0.16        97
+           1       0.56      0.93      0.70       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.51      0.43       217
+weighted avg       0.53      0.55      0.45       217
+
+-- Cutoff 0
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.53      0.10      0.17        97
+           1       0.56      0.93      0.70       120
+
+    accuracy                           0.56       217
+   macro avg       0.54      0.51      0.44       217
+weighted avg       0.55      0.56      0.46       217
+
+-- Cutoff 0.1
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.53      0.10      0.17        97
+           1       0.56      0.93      0.70       120
+
+    accuracy                           0.56       217
+   macro avg       0.54      0.51      0.44       217
+weighted avg       0.55      0.56      0.46       217
+
+-- Cutoff 0.9
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.53      0.10      0.17        97
+           1       0.56      0.93      0.70       120
+
+    accuracy                           0.56       217
+   macro avg       0.54      0.51      0.44       217
+weighted avg       0.55      0.56      0.46       217
+
+-- Cutoff 0.2
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.53      0.10      0.17        97
+           1       0.56      0.93      0.70       120
+
+    accuracy                           0.56       217
+   macro avg       0.54      0.51      0.44       217
+weighted avg       0.55      0.56      0.46       217
+
+===================================================
+LAG 3
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (10, 10, 10), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 5000, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.48      0.05      0.08      1986
+           1       0.58      0.96      0.72      2668
+
+    accuracy                           0.57      4654
+   macro avg       0.53      0.50      0.40      4654
+weighted avg       0.53      0.57      0.45      4654
+
+Confusion Matrix
+[[  90 1896]
+ [  98 2570]]
+Accuracy:
+0.5715513536742587
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      1.00      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.28      0.50      0.36       217
+weighted avg       0.31      0.55      0.39       217
+
+-- Cutoff 0
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.28      0.50      0.35       217
+weighted avg       0.30      0.55      0.39       217
+
+-- Cutoff 0.1
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.28      0.50      0.35       217
+weighted avg       0.30      0.55      0.39       217
+
+-- Cutoff 0.9
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.28      0.50      0.35       217
+weighted avg       0.30      0.55      0.39       217
+
+-- Cutoff 0.2
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.00      0.00      0.00        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.28      0.50      0.35       217
+weighted avg       0.30      0.55      0.39       217
+
+===================================================
+LAG 4
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (10, 10, 10), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 5000, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.51      0.02      0.04      1815
+           1       0.61      0.99      0.76      2839
+
+    accuracy                           0.61      4654
+   macro avg       0.56      0.50      0.40      4654
+weighted avg       0.57      0.61      0.48      4654
+
+Confusion Matrix
+[[  39 1776]
+ [  38 2801]]
+Accuracy:
+0.6102277610657499
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.1
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.9
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+-- Cutoff 0.2
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.50      0.01      0.02        97
+           1       0.55      0.99      0.71       120
+
+    accuracy                           0.55       217
+   macro avg       0.53      0.50      0.37       217
+weighted avg       0.53      0.55      0.40       217
+
+===================================================
+LAG 5
+Model Parameters: 
+{'activation': 'relu', 'alpha': 0.0001, 'batch_size': 'auto', 'beta_1': 0.9, 'beta_2': 0.999, 'early_stopping': False, 'epsilon': 1e-08, 'hidden_layer_sizes': (10, 10, 10), 'learning_rate': 'constant', 'learning_rate_init': 0.001, 'max_iter': 5000, 'momentum': 0.9, 'n_iter_no_change': 10, 'nesterovs_momentum': True, 'power_t': 0.5, 'random_state': 1, 'shuffle': False, 'solver': 'adam', 'tol': 0.0001, 'validation_fraction': 0, 'verbose': False, 'warm_start': False}
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.44      0.45      0.45      1995
+           1       0.58      0.58      0.58      2659
+
+    accuracy                           0.52      4654
+   macro avg       0.51      0.51      0.51      4654
+weighted avg       0.52      0.52      0.52      4654
+
+Confusion Matrix
+[[ 896 1099]
+ [1127 1532]]
+Accuracy:
+0.5217017619252257
+Combining predictions by day with mode:
+              precision    recall  f1-score   support
+
+          -1       0.42      0.37      0.40        97
+           1       0.54      0.59      0.56       120
+
+    accuracy                           0.49       217
+   macro avg       0.48      0.48      0.48       217
+weighted avg       0.49      0.49      0.49       217
+
+-- Cutoff 0
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.43      0.40      0.42        97
+           1       0.54      0.57      0.56       120
+
+    accuracy                           0.50       217
+   macro avg       0.49      0.49      0.49       217
+weighted avg       0.49      0.50      0.50       217
+
+-- Cutoff 0.1
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.43      0.40      0.42        97
+           1       0.54      0.57      0.56       120
+
+    accuracy                           0.50       217
+   macro avg       0.49      0.49      0.49       217
+weighted avg       0.49      0.50      0.50       217
+
+-- Cutoff 0.9
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.43      0.40      0.42        97
+           1       0.54      0.57      0.56       120
+
+    accuracy                           0.50       217
+   macro avg       0.49      0.49      0.49       217
+weighted avg       0.49      0.50      0.50       217
+
+-- Cutoff 0.2
+Combining predictions by day with mean:
+              precision    recall  f1-score   support
+
+          -1       0.43      0.40      0.42        97
+           1       0.54      0.57      0.56       120
+
+    accuracy                           0.50       217
+   macro avg       0.49      0.49      0.49       217
+weighted avg       0.49      0.50      0.50       217
+

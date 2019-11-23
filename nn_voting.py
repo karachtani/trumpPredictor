@@ -75,56 +75,61 @@ with open('nn_voter_log.txt', "a") as log_file:
         #insert any sklearn model here
 
         if lag == 1:
-            clf = MLPClassifier(activation='relu', alpha=1e-06, batch_size='auto', beta_1=0.95,
+            clf = MLPClassifier(activation='relu', alpha=.0001, batch_size='auto', beta_1=0.9,
                                   beta_2=0.999, early_stopping=False, epsilon=1e-08,
-                                  hidden_layer_sizes=5, learning_rate='constant',
-                                  learning_rate_init=0.001, max_iter=500, momentum=0.9,
+                                  hidden_layer_sizes=(10,10,10), learning_rate='constant',
+                                  learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+                                  n_iter_no_change=10,
                                   nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=False,
                                   solver='adam', tol=0.0001, validation_fraction=0, verbose=False,
                                   warm_start=False)
         elif lag == 2:
-            clf = MLPClassifier(activation='relu', alpha=0.1, batch_size='auto', beta_1=0.9,
+            clf = MLPClassifier(activation='relu', alpha=.0001, batch_size='auto', beta_1=0.9,
                                   beta_2=0.999, early_stopping=False, epsilon=1e-08,
-                                  hidden_layer_sizes=6, learning_rate='constant',
-                                  learning_rate_init=0.001, max_iter=500, momentum=0.9,
+                                  hidden_layer_sizes=(10,10,10), learning_rate='constant',
+                                  learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+                                  n_iter_no_change=10,
                                   nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=False,
                                   solver='adam', tol=0.0001, validation_fraction=0, verbose=False,
                                   warm_start=False)
 
         elif lag == 3:
-            clf = MLPClassifier(activation='relu', alpha=0.1, batch_size='auto', beta_1=0.9,
+            clf = MLPClassifier(activation='relu', alpha=.0001, batch_size='auto', beta_1=0.9,
                                   beta_2=0.999, early_stopping=False, epsilon=1e-08,
-                                  hidden_layer_sizes=6, learning_rate='constant',
-                                  learning_rate_init=0.001, max_iter=500, momentum=0.99,
+                                  hidden_layer_sizes=(10,10,10), learning_rate='constant',
+                                  learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+                                  n_iter_no_change=10,
                                   nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=False,
-                                  solver='sgd', tol=0.0001, validation_fraction=0, verbose=False,
+                                  solver='adam', tol=0.0001, validation_fraction=0, verbose=False,
                                   warm_start=False)
 
         elif lag == 4:
-            clf = MLPClassifier(activation='relu', alpha=0.1, batch_size='auto', beta_1=0.9,
+            clf = MLPClassifier(activation='relu', alpha=.0001, batch_size='auto', beta_1=0.9,
                                   beta_2=0.999, early_stopping=False, epsilon=1e-08,
-                                  hidden_layer_sizes=9, learning_rate='constant',
-                                  learning_rate_init=0.001, max_iter=500, momentum=0.9,
+                                  hidden_layer_sizes=(10,10,10), learning_rate='constant',
+                                  learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+                                  n_iter_no_change=10,
                                   nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=False,
-                                  solver='sgd', tol=0.0001, validation_fraction=0, verbose=False,
+                                  solver='adam', tol=0.0001, validation_fraction=0, verbose=False,
                                   warm_start=False)
-
         elif lag == 5:
-            clf = MLPClassifier(activation='relu', alpha=0.01, batch_size='auto', beta_1=0.95,
-                                  beta_2=0.99, early_stopping=False, epsilon=1e-08,
-                                  hidden_layer_sizes=7, learning_rate='constant',
-                                  learning_rate_init=0.001, max_iter=500, momentum=0.9,
+            clf = MLPClassifier(activation='relu', alpha=.0001, batch_size='auto', beta_1=0.9,
+                                  beta_2=0.999, early_stopping=False, epsilon=1e-08,
+                                  hidden_layer_sizes=(10,10,10), learning_rate='constant',
+                                  learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+                                  n_iter_no_change=10,
                                   nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=False,
                                   solver='adam', tol=0.0001, validation_fraction=0, verbose=False,
                                   warm_start=False)
         else:
-            clf = MLPClassifier(activation='relu', alpha=0.1, batch_size='auto', beta_1=0.95,
-                                  beta_2=0.99, early_stopping=False, epsilon=1e-08,
-                                  hidden_layer_sizes=9, learning_rate='constant',
-                                  learning_rate_init=0.001, max_iter=500, momentum=0.9,
-                                  nesterovs_momentum=True, power_t=0.5,
-                                  random_state=1, shuffle=False, solver='adam', tol=0.0001,
-                                  validation_fraction=0, verbose=False, warm_start=False)
+            clf = MLPClassifier(activation='relu', alpha=.0001, batch_size='auto', beta_1=0.9,
+                                  beta_2=0.999, early_stopping=False, epsilon=1e-08,
+                                  hidden_layer_sizes=(10,10,10), learning_rate='constant',
+                                  learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+                                  n_iter_no_change=10,
+                                  nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=False,
+                                  solver='adam', tol=0.0001, validation_fraction=0, verbose=False,
+                                  warm_start=False)
 
         # parameters = {'activation': ['relu'],
         #               'batch_size': ['auto'],
@@ -242,7 +247,7 @@ with open('nn_voter_log.txt', "a") as log_file:
 
             mode_acc = accuracy_score(res2['y_test'], res2['mean_adj'])
             print('mode acc: ',mode_acc)
-            out = 'Combining predictions by day with mode:'
+            out = 'Combining predictions by day with mean:'
             log_file.write('%s\n' % out)  # save the message
             cr = classification_report(res2['y_test'], res2['mean_adj'])
             print('Mean Classification Report: \n',cr)
