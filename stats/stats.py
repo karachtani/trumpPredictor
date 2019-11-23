@@ -9,7 +9,7 @@ from scipy.stats import zscore
 
 
 for lag in range(0,6):
-    data = pd.read_csv("lag" + str(lag) + ".csv", index_col=0)
+    data = pd.read_csv("../lag" + str(lag) + ".csv", index_col=0)
 
     def toint(output):
         return int(output)

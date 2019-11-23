@@ -37,6 +37,34 @@ def get_multi_stock_data(tickers = [], start_date = '2017-01-05', end_date = '20
 
     return data
 
+def add_indicators(data):
+    price = data[['5. adjusted close']]
+
+    ema = pd.DataFrame(index = price.index)
+    sma = pd.DataFrame(index = price.index)
+    multiplier = []
+    ema_0_tmp = np.zeros((len(price)))
+    windows = [5,10,20]
+    for w in windows:
+        sma['SMA' + str(w)] = price['5. adjusted close'].rolling(w).mean()
+        mult = 2 / (w + 1)
+        multiplier.append(mult)
+        ema['EMA' + str(w)] = ema_0_tmp
+        for i in range(0, len(price)):
+            # pdb.set_trace()
+            if i < w:
+                ema['EMA' + str(w)][i] = float('nan')
+            elif i == w:
+                ema['EMA' + str(w)][i] = (price['5. adjusted close'][i] - sma['SMA' + str(w)][i-1])\
+                                                  * mult + sma['SMA' + str(w)][i-1]
+            elif i > w:
+                ema['EMA' + str(w)][i] = (price['5. adjusted close'][i] - ema['EMA' + str(w)][i-1])\
+                                                  * mult + ema['EMA' + str(w)][i-1]
+
+    data_ema = pd.concat([data,ema], axis=1)
+    #print(data_ema)
+    return data_ema
+
 def clean_stock_data(data, lag=0):
 
     # data['Price Change'] = 1 if data['1. open'] < data['5. adjusted close'] else -1
@@ -52,6 +80,7 @@ def clean_stock_data(data, lag=0):
     # data['Adjusted Price Change %'].fillna(0, inplace=True)
     # data['Default Price Change %'].fillna(0, inplace=True)
 
+    data = add_indicators(data)
 
     data = data.reset_index()
 

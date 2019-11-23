@@ -1,0 +1,208 @@
+===================================================
+LAG 0
+best parameters found: 
+{'activation': 'logistic', 'alpha': 0.1, 'batch_size': 'auto', 'epsilon': 1e-08, 'hidden_layer_sizes': (4, 10), 'max_iter': 5000, 'momentum': 0.9, 'solver': 'lbfgs'}
+MLPClassifier(activation='logistic', alpha=0.1, batch_size='auto', beta_1=0.9,
+              beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=(4, 10), learning_rate='constant',
+              learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+              n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
+              random_state=1, shuffle=True, solver='lbfgs', tol=0.0001,
+              validation_fraction=0, verbose=False, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.43      0.35      0.38      2121
+           1       0.53      0.61      0.57      2533
+
+    accuracy                           0.49      4654
+   macro avg       0.48      0.48      0.47      4654
+weighted avg       0.48      0.49      0.48      4654
+
+Confusion Matrix
+[[ 734 1387]
+ [ 982 1551]]
+Accuracy:
+0.4909755049419854
+===================================================
+LAG 1
+best parameters found: 
+{'activation': 'logistic', 'alpha': 0.1, 'batch_size': 'auto', 'epsilon': 1e-08, 'hidden_layer_sizes': (4, 10), 'max_iter': 5000, 'momentum': 0.9, 'solver': 'lbfgs'}
+MLPClassifier(activation='logistic', alpha=0.1, batch_size='auto', beta_1=0.9,
+              beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=(4, 10), learning_rate='constant',
+              learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+              n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
+              random_state=1, shuffle=True, solver='lbfgs', tol=0.0001,
+              validation_fraction=0, verbose=False, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.45      0.86      0.59      2031
+           1       0.63      0.18      0.28      2623
+
+    accuracy                           0.48      4654
+   macro avg       0.54      0.52      0.43      4654
+weighted avg       0.55      0.48      0.41      4654
+
+Confusion Matrix
+[[1756  275]
+ [2154  469]]
+Accuracy:
+0.47808336914482163
+===================================================
+LAG 2
+best parameters found: 
+{'activation': 'logistic', 'alpha': 1e-05, 'batch_size': 'auto', 'epsilon': 1e-08, 'hidden_layer_sizes': 8, 'max_iter': 5000, 'momentum': 0.9, 'solver': 'lbfgs'}
+MLPClassifier(activation='logistic', alpha=1e-05, batch_size='auto', beta_1=0.9,
+              beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=8, learning_rate='constant',
+              learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+              n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
+              random_state=1, shuffle=True, solver='lbfgs', tol=0.0001,
+              validation_fraction=0, verbose=False, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.50      0.36      0.42      2013
+           1       0.60      0.73      0.66      2641
+
+    accuracy                           0.57      4654
+   macro avg       0.55      0.54      0.54      4654
+weighted avg       0.56      0.57      0.56      4654
+
+Confusion Matrix
+[[ 730 1283]
+ [ 721 1920]]
+Accuracy:
+0.5694026643747314
+===================================================
+LAG 3
+best parameters found: 
+{'activation': 'logistic', 'alpha': 0.1, 'batch_size': 'auto', 'epsilon': 1e-08, 'hidden_layer_sizes': (4, 10), 'max_iter': 5000, 'momentum': 0.9, 'solver': 'lbfgs'}
+MLPClassifier(activation='logistic', alpha=0.1, batch_size='auto', beta_1=0.9,
+              beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=(4, 10), learning_rate='constant',
+              learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+              n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
+              random_state=1, shuffle=True, solver='lbfgs', tol=0.0001,
+              validation_fraction=0, verbose=False, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.41      0.14      0.21      1986
+           1       0.57      0.85      0.68      2668
+
+    accuracy                           0.55      4654
+   macro avg       0.49      0.50      0.45      4654
+weighted avg       0.50      0.55      0.48      4654
+
+Confusion Matrix
+[[ 281 1705]
+ [ 397 2271]]
+Accuracy:
+0.548345509239364
+===================================================
+LAG 4
+best parameters found: 
+{'activation': 'relu', 'alpha': 0.01, 'batch_size': 'auto', 'epsilon': 1e-08, 'hidden_layer_sizes': 8, 'max_iter': 5000, 'momentum': 0.9, 'solver': 'lbfgs'}
+MLPClassifier(activation='relu', alpha=0.01, batch_size='auto', beta_1=0.9,
+              beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=8, learning_rate='constant',
+              learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+              n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
+              random_state=1, shuffle=True, solver='lbfgs', tol=0.0001,
+              validation_fraction=0, verbose=False, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.22      0.06      0.09      1815
+           1       0.59      0.86      0.70      2839
+
+    accuracy                           0.55      4654
+   macro avg       0.40      0.46      0.40      4654
+weighted avg       0.44      0.55      0.46      4654
+
+Confusion Matrix
+[[ 107 1708]
+ [ 386 2453]]
+Accuracy:
+0.5500644606789858
+===================================================
+LAG 5
+best parameters found: 
+{'activation': 'logistic', 'alpha': 0.1, 'batch_size': 'auto', 'epsilon': 1e-08, 'hidden_layer_sizes': (4, 10), 'max_iter': 5000, 'momentum': 0.9, 'solver': 'lbfgs'}
+MLPClassifier(activation='logistic', alpha=0.1, batch_size='auto', beta_1=0.9,
+              beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=(4, 10), learning_rate='constant',
+              learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+              n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
+              random_state=1, shuffle=True, solver='lbfgs', tol=0.0001,
+              validation_fraction=0, verbose=False, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.44      0.57      0.49      1995
+           1       0.58      0.45      0.51      2659
+
+    accuracy                           0.50      4654
+   macro avg       0.51      0.51      0.50      4654
+weighted avg       0.52      0.50      0.50      4654
+
+Confusion Matrix
+[[1131  864]
+ [1464 1195]]
+Accuracy:
+0.4997851310700473
+===================================================
+LAG 6
+best parameters found: 
+{'activation': 'logistic', 'alpha': 0.0001, 'batch_size': 'auto', 'epsilon': 1e-08, 'hidden_layer_sizes': 9, 'max_iter': 5000, 'momentum': 0.9, 'solver': 'lbfgs'}
+MLPClassifier(activation='logistic', alpha=0.0001, batch_size='auto',
+              beta_1=0.9, beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=9, learning_rate='constant',
+              learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+              n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
+              random_state=1, shuffle=True, solver='lbfgs', tol=0.0001,
+              validation_fraction=0, verbose=False, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.41      0.45      0.43      2071
+           1       0.52      0.49      0.51      2583
+
+    accuracy                           0.47      4654
+   macro avg       0.47      0.47      0.47      4654
+weighted avg       0.47      0.47      0.47      4654
+
+Confusion Matrix
+[[ 925 1146]
+ [1321 1262]]
+Accuracy:
+0.46991834980661795
+===================================================
+LAG 7
+best parameters found: 
+{'activation': 'logistic', 'alpha': 0.0001, 'batch_size': 'auto', 'epsilon': 1e-08, 'hidden_layer_sizes': 9, 'max_iter': 5000, 'momentum': 0.9, 'solver': 'lbfgs'}
+MLPClassifier(activation='logistic', alpha=0.0001, batch_size='auto',
+              beta_1=0.9, beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=9, learning_rate='constant',
+              learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+              n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
+              random_state=1, shuffle=True, solver='lbfgs', tol=0.0001,
+              validation_fraction=0, verbose=False, warm_start=False)
+Classification Report
+              precision    recall  f1-score   support
+
+          -1       0.43      0.65      0.52      2109
+           1       0.51      0.30      0.38      2545
+
+    accuracy                           0.46      4654
+   macro avg       0.47      0.47      0.45      4654
+weighted avg       0.47      0.46      0.44      4654
+
+Confusion Matrix
+[[1366  743]
+ [1786  759]]
+Accuracy:
+0.4565964761495488
