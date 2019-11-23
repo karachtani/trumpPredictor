@@ -23,8 +23,8 @@ import scipy
 #    UndefinedMetricWarning: F - score is ill - defined and being set to 0.0 in labels with no predicted samples.'precision', 'predicted', average, warn_for)
 warnings.filterwarnings("always")
 
-with open('nn_voter_log.txt', "a") as log_file:
-    for lag in range(0, 6):
+with open('nn_voter_log_wEMA.txt', "a") as log_file:
+    for lag in range(0, 8):
         data = pd.read_csv("lag"+str(lag)+".csv", index_col=0)
 
         """ DATA PREP """
@@ -39,11 +39,10 @@ with open('nn_voter_log.txt', "a") as log_file:
             .map(toint)
         data['day'] = data['date']\
             .map(to_day)
-        data = data[['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd','IsTradingDay', 'numTweets', 'output']]
+        data = data[['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd','IsTradingDay', 'numTweets','EMA5',
+                     'EMA10','EMA20', 'output']]
 
         print(data.columns)
-        #'date', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd',
-        #'IsTradingDay', 'numTweets', 'Output', 'output', 'day'
 
         data_test = data[:4654].sample(frac=1)
         data_train = data[4654:].sample(frac=1)
@@ -53,19 +52,21 @@ with open('nn_voter_log.txt', "a") as log_file:
         y_train = data_train['output']
         y_test = data_test['output']
 
-        X_train = data_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'numTweets']]
-        X_test = data_test[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'numTweets']]
+        X_train = data_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'numTweets',
+                              'EMA5', 'EMA10','EMA20']]
+        X_test = data_test[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'numTweets',
+                            'EMA5', 'EMA10','EMA20']]
         #print(X_train)
         #print(len(data.date.unique())) 1081 dates but 1098 days
 
         #columns are date,time,retweet_count,neg,neu,pos,cmpd,IsTradingDay,numTweets,Output
         #scale columns that are numerical values not labeled classes
         sc = StandardScaler()
-        sc.fit(X_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']])
-        X_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']] = \
-            sc.transform(X_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']])
-        X_test[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']] = \
-            sc.transform(X_test[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']])
+        sc.fit(X_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets','EMA5', 'EMA10','EMA20']])
+        X_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets','EMA5', 'EMA10','EMA20']] = \
+            sc.transform(X_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets','EMA5', 'EMA10','EMA20']])
+        X_test[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets','EMA5', 'EMA10','EMA20']] = \
+            sc.transform(X_test[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets','EMA5', 'EMA10','EMA20']])
         features = list(X_train.columns.values)
         expected_vals = X_test[['day']]
         expected_vals['y_test'] = y_test
