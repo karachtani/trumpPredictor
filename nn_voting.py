@@ -23,8 +23,8 @@ import scipy
 #    UndefinedMetricWarning: F - score is ill - defined and being set to 0.0 in labels with no predicted samples.'precision', 'predicted', average, warn_for)
 warnings.filterwarnings("always")
 
-with open('nn_voter_log_wEMA.txt', "a") as log_file:
-    for lag in range(0, 8):
+with open('nn_voter_log_wEMA_tuned.txt', "a") as log_file:
+    for lag in [2,3,4]: #range(0, 8):
         data = pd.read_csv("lag"+str(lag)+".csv", index_col=0)
 
         """ DATA PREP """
@@ -84,35 +84,33 @@ with open('nn_voter_log_wEMA.txt', "a") as log_file:
                                   nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=False,
                                   solver='adam', tol=0.0001, validation_fraction=0, verbose=False,
                                   warm_start=False)
-        elif lag == 2:
-            clf = MLPClassifier(activation='relu', alpha=.0001, batch_size='auto', beta_1=0.9,
-                                  beta_2=0.999, early_stopping=False, epsilon=1e-08,
-                                  hidden_layer_sizes=(10,10,10), learning_rate='constant',
-                                  learning_rate_init=0.001, max_iter=5000, momentum=0.9,
-                                  n_iter_no_change=10,
-                                  nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=False,
-                                  solver='adam', tol=0.0001, validation_fraction=0, verbose=False,
-                                  warm_start=False)
+        elif lag == 2: #one of the best acc results
+            clf = MLPClassifier(activation='logistic', alpha=0.1, batch_size='auto', beta_1=0.9,
+              beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=(10, 4), learning_rate='constant',
+              learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+              n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
+              random_state=1, shuffle=True, solver='lbfgs', tol=0.0001,
+              validation_fraction=0, verbose=False, warm_start=False)
 
-        elif lag == 3:
-            clf = MLPClassifier(activation='relu', alpha=.0001, batch_size='auto', beta_1=0.9,
-                                  beta_2=0.999, early_stopping=False, epsilon=1e-08,
-                                  hidden_layer_sizes=(10,10,10), learning_rate='constant',
-                                  learning_rate_init=0.001, max_iter=5000, momentum=0.9,
-                                  n_iter_no_change=10,
-                                  nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=False,
-                                  solver='adam', tol=0.0001, validation_fraction=0, verbose=False,
-                                  warm_start=False)
+        elif lag == 3: #one of the best acc results
+            clf = MLPClassifier(activation='relu', alpha=0.0001, batch_size='auto', beta_1=0.9,
+              beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=(10, 10, 10), learning_rate='constant',
+              learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+              n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
+              random_state=1, shuffle=True, solver='lbfgs', tol=0.0001,
+              validation_fraction=0, verbose=False, warm_start=False)
 
-        elif lag == 4:
-            clf = MLPClassifier(activation='relu', alpha=.0001, batch_size='auto', beta_1=0.9,
-                                  beta_2=0.999, early_stopping=False, epsilon=1e-08,
-                                  hidden_layer_sizes=(10,10,10), learning_rate='constant',
-                                  learning_rate_init=0.001, max_iter=5000, momentum=0.9,
-                                  n_iter_no_change=10,
-                                  nesterovs_momentum=True, power_t=0.5, random_state=1, shuffle=False,
-                                  solver='adam', tol=0.0001, validation_fraction=0, verbose=False,
-                                  warm_start=False)
+
+        elif lag == 4: #one of the best acc results
+            clf = MLPClassifier(activation='logistic', alpha=0.1, batch_size='auto', beta_1=0.9,
+              beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=(100,), learning_rate='constant',
+              learning_rate_init=0.001, max_iter=5000, momentum=0.9,
+              n_iter_no_change=10, nesterovs_momentum=True, power_t=0.5,
+              random_state=1, shuffle=True, solver='lbfgs', tol=0.0001,
+              validation_fraction=0, verbose=False, warm_start=False)
         elif lag == 5:
             clf = MLPClassifier(activation='relu', alpha=.0001, batch_size='auto', beta_1=0.9,
                                   beta_2=0.999, early_stopping=False, epsilon=1e-08,
