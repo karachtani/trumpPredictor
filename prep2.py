@@ -65,8 +65,6 @@ def sentiment_analyzer_scores_cmp(sentence):
 
 df = pd.read_csv(filepath_or_buffer='tweets110916_111219.csv',index_col='id_str')
 
-print(df.dtypes)
-
 clean_df = df.copy()
 
 clean_df['text'] = df['text']\
@@ -109,7 +107,16 @@ clean_df['time'] = pd.to_timedelta(clean_df['created_at']\
 cdf= clean_df.copy()
 cdf.loc[clean_df['is_retweet'] == True, 'is_retweet'] = 1
 cdf.loc[clean_df['is_retweet'] == False, 'is_retweet'] = 0
+#58 non retweets are marked as null
+cdf.loc[ (clean_df['is_retweet'] != True) & (clean_df['is_retweet'] != False), 'is_retweet'] = 0
+
+print(cdf[cdf['is_retweet'].isnull()])
+
+print(cdf.dtypes)
+print(cdf.info())
+print(cdf.isnull().sum())
 print(cdf)
+print('----------------')
 
 cdf.to_csv("tweets_sentiments2.csv", index=True)
 
