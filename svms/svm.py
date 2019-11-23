@@ -42,8 +42,8 @@ def gs_plot(cv_results_, save_name):
 
 models = []
 
-with open('results_svm.txt', "a") as log_file:
-    for lag in range(0, 6):
+with open('results_svm_ema.txt', "a") as log_file:
+    for lag in range(0, 8):
         data = pd.read_csv("../lag"+str(lag)+".csv", index_col=0)
         def toint(output):
             return int(output)
@@ -56,38 +56,44 @@ with open('results_svm.txt', "a") as log_file:
             .map(toint)
         data['day'] = data['date']\
             .map(to_day)
-        data = data[['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd','IsTradingDay', 'numTweets', 'output']]
+        data = data[['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'numTweets', 'EMA5',
+                     'EMA10', 'EMA20', 'output']]
 
         print(data.columns)
-        #'date', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd',
-        #'IsTradingDay', 'numTweets', 'Output', 'output', 'day'
 
         data_test = data[:4654].sample(frac=1)
         data_train = data[4654:].sample(frac=1)
-        #print(data_test)
-        #print(data_train)
+        # print(data_test)
+        # print(data_train)
 
         y_train = data_train['output']
         y_test = data_test['output']
 
-        X_train = data_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'numTweets']]
-        X_test = data_test[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'numTweets']]
-        #print(X_train)
-        #print(len(data.date.unique())) 1081 dates but 1098 days
+        X_train = data_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'numTweets',
+                              'EMA5', 'EMA10', 'EMA20']]
+        X_test = data_test[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'numTweets',
+                            'EMA5', 'EMA10', 'EMA20']]
+        # print(X_train)
+        # print(len(data.date.unique())) 1081 dates but 1098 days
 
-        #columns are date,time,retweet_count,neg,neu,pos,cmpd,IsTradingDay,numTweets,Output
-        #scale columns that are numerical values not labeled classes
+        # columns are date,time,retweet_count,neg,neu,pos,cmpd,IsTradingDay,numTweets,Output
+        # scale columns that are numerical values not labeled classes
         sc = StandardScaler()
-        sc.fit(X_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']])
-        X_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']] = \
-            sc.transform(X_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']])
-        X_test[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']] = \
-            sc.transform(X_test[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']])
+        sc.fit(X_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets', 'EMA5', 'EMA10',
+                        'EMA20']])
+        X_train[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets', 'EMA5', 'EMA10', 'EMA20']] = \
+            sc.transform(X_train[
+                             ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets', 'EMA5', 'EMA10',
+                              'EMA20']])
+        X_test[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets', 'EMA5', 'EMA10', 'EMA20']] = \
+            sc.transform(X_test[
+                             ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets', 'EMA5', 'EMA10',
+                              'EMA20']])
         features = list(X_train.columns.values)
         print(X_train.shape)
         print(X_test.shape)
-        param_grid = {'C': [1e-5,1e-4, 1e-3, 1e-2, 0.1],# 1, 10, 100],
-                          'gamma': ['auto','scale', 1e-5, 1e-4, 1e-3, 1e-2, 0.1, 1, 10, 100],
+        param_grid = {'C': [.1,.9], #[1e-5,1e-4, 1e-3, 1e-2, 0.1],# 1, 10, 100],
+                          'gamma': ['scale',1,10,100], #'['auto','scale', 1e-5, 1e-4, 1e-3, 1e-2, 0.1, 1, 10, 100],
                           'kernel': ['sigmoid']}
         print(sorted(SCORERS.keys()))
 
