@@ -6,7 +6,7 @@ from file_util import get_data_from_memory, save_to_memory
 
 DIR_NAME = 'stock_data'
 
-def get_single_stock_data(ticker = 'SPY', start_date = '2017-01-05', end_date = '2019-01-05'):
+def get_single_stock_data(ticker='QQQ', start_date = "2016-11-01", end_date="2019-11-18"):
     data = get_data_from_memory(DIR_NAME, ticker, start_date, end_date)
 
     if data is None:
@@ -61,4 +61,6 @@ def clean_stock_data(data, lag=0):
 
     return data
 
+
+get_single_stock_data(ticker='VGT')
 

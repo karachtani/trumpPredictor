@@ -12,7 +12,6 @@ import QLearner as ql
 import marketsimcode as mktsim
 
 
-
 class StrategyLearner(object):
 
     # constructor
@@ -34,16 +33,25 @@ class StrategyLearner(object):
         self.test_data = data.iloc[test_cutoff + 1:]
 
     # this method should create a QLearner, and train it for trading
-    def train(self, sv = 100000):
+    def train(self,
+              sv = 100000,
+              alpha=0.2,
+              gamma=0.9,
+              rar=0.8,
+              epochs=100):
 
         # get the data and discretize them into buckets
         data = self.train_data
 
-        self.learner = ql.QLearner(num_states=int(pow(self.numBins, 3)), num_actions=3, rar=.5)
+        self.learner = ql.QLearner(num_states=int(pow(self.numBins, 3)),
+                                   num_actions=3,
+                                   alpha=alpha,
+                                   gamma=gamma,
+                                   rar=rar)
 
         portValues = []
 
-        while len(portValues) < 250:
+        while len(portValues) < epochs:
 
             # set up orders array
             orders_np = np.empty([0, 3])
@@ -76,7 +84,8 @@ class StrategyLearner(object):
                 # print portValue
 
             portValues.append(portValue)
-            print(len(portValues),": ", portValue)
+
+        return pd.DataFrame(data=portValues)
 
             # this method should use the existing policy and test it against new data
 
@@ -111,12 +120,9 @@ class StrategyLearner(object):
 
         prices_df = data[['price','date']]
         prices_df = prices_df.set_index('date')
-        return mktsim.compute_portvals(ordersDF=ordersDF, prices=prices_df, start_val=sv)
-        # return ordersDF
-        # print (finalValues.iloc[-1,0] - finalValues['Value'].iloc[0,0]) / finalValues.iloc[0,0]
-        # print finalValues.iloc[-1]
-        # print finalValues
-        # return ordersMinified
+        portfolio =  mktsim.compute_portvals(ordersDF=ordersDF, prices=prices_df, start_val=sv)
+
+        return portfolio, ordersDF
 
     # returns (order type, shares, new port state)
     def actionToOrder(self, action, curPortState):

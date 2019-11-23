@@ -2,8 +2,11 @@ import os
 import pandas as pd
 
 def save_to_memory(dir_name, ticker, start_date, end_date, data):
-    maybe_make_data_dir(dir_name)
     file_name = make_file_name(ticker, start_date, end_date)
+    save_to_memory_with_fname(dir_name, file_name, data)
+
+def save_to_memory_with_fname(dir_name, file_name, data):
+    maybe_make_data_dir(dir_name)
     data.to_csv(dir_name + '/' + file_name)
 
 def maybe_make_data_dir(dir_name):

@@ -15,9 +15,8 @@ class QLearner(object):
                  num_actions=4,
                  alpha=0.2,
                  gamma=0.9,
-                 rar=0.5,
+                 rar=0.8,
                  radr=0.99,
-                 dyna=0,
                  verbose=False):
 
         self.verbose = verbose
@@ -26,12 +25,10 @@ class QLearner(object):
         self.gamma = gamma
         self.rar = rar
         self.radr = radr
-        self.dyna = dyna
         self.s = 0
         self.a = 0
         self.Q = np.empty((num_states,num_actions))
         self.Q[:,:] = 0.0
-        self.experiences = []
 
     def querysetstate(self, s):
         """
@@ -69,21 +66,6 @@ class QLearner(object):
                                  + self.alpha\
                                    * (r + self.gamma * self.Q[s_prime, action])
 
-
-        self.experiences.append((self.s, self.a, s_prime, r))
-
-        for i in range(0,self.dyna):
-            exp = rand.choice(self.experiences)
-
-            if np.random.rand(1) < self.rar:
-                action2 = rand.randint(0, self.num_actions - 1)
-            else:
-                action2 = np.argmax(self.Q[exp[2]])
-
-            self.Q[exp[0], exp[1]] = (1 - self.alpha) \
-                                     * self.Q[exp[0], exp[1]] \
-                                     + self.alpha \
-                                       * (exp[3] + self.gamma * self.Q[exp[2], action2])
 
         self.s = s_prime
         self.a = action
