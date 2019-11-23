@@ -48,8 +48,8 @@ with open('results_nn_dropneupt2.txt', "a") as log_file:
         data['day'] = data['date']\
             .map(to_day)
         if useema:
-            data = data[['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd','IsTradingDay','numTweets','EMA5','EMA10','EMA20', 'output']]
-        else: data = data[['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd','IsTradingDay','numTweets', 'output']]
+            data = data[['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd','IsTradingDay','is_retweet', 'numTweets','EMA5','EMA10','EMA20', 'output']]
+        else: data = data[['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd','IsTradingDay','is_retweet', 'numTweets', 'output']]
 
         if useaverage == 1:
             data['avg_RTcount'] = data.groupby('day')['retweet_count'].transform('mean')
@@ -60,13 +60,13 @@ with open('results_nn_dropneupt2.txt', "a") as log_file:
             data['avg_time'] = data.groupby('day')['time'].transform('mean')
 
             if useema:
-                avg_ema_traincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'IsTradingDay', 'numTweets', 'EMA5','EMA10', 'EMA20', 'output']
-                avg_ema_xtraincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'IsTradingDay', 'numTweets', 'EMA5','EMA10', 'EMA20']
+                avg_ema_traincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'IsTradingDay','is_retweet',  'numTweets', 'EMA5','EMA10', 'EMA20', 'output']
+                avg_ema_xtraincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'IsTradingDay','is_retweet',  'numTweets', 'EMA5','EMA10', 'EMA20']
                 avg_ema_scalecols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'numTweets', 'EMA5', 'EMA10', 'EMA20']
                 daily_data = data[avg_ema_traincols]
             else:
-                avg_traincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'IsTradingDay', 'numTweets', 'output']
-                avg_xtraincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'IsTradingDay', 'numTweets']
+                avg_traincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'IsTradingDay','is_retweet',  'numTweets', 'output']
+                avg_xtraincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'IsTradingDay','is_retweet',  'numTweets']
                 avg_scalecols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'numTweets']
                 daily_data = data[avg_traincols]
             data = daily_data.drop_duplicates()
@@ -97,10 +97,10 @@ with open('results_nn_dropneupt2.txt', "a") as log_file:
         y_train = data_train['output']
         y_test = data_test['output']
 
-        basic_xcols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'numTweets']
+        basic_xcols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay','is_retweet',  'numTweets']
         basic_xscalecols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']
         ema_xscalecols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets', 'EMA5', 'EMA10','EMA20']
-        ema_xcols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'numTweets', 'EMA5','EMA10', 'EMA20']
+        ema_xcols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay','is_retweet',  'numTweets', 'EMA5','EMA10', 'EMA20']
         if useaverage:
             if useema:
                 XCOLS = avg_ema_xtraincols
