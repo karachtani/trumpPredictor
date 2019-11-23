@@ -7,7 +7,8 @@ def save_to_memory(dir_name, ticker, start_date, end_date, data):
 
 def save_to_memory_with_fname(dir_name, file_name, data):
     maybe_make_data_dir(dir_name)
-    data.to_csv(dir_name + '/' + file_name)
+    with open(dir_name + '/' + file_name, "w") as f:
+        data.to_csv(f)
 
 def maybe_make_data_dir(dir_name):
     if not os.path.exists(dir_name):

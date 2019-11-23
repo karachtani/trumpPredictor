@@ -45,7 +45,6 @@ def compute_portvals(ordersDF = None, prices = None, start_val=1000000):
 
     finalValues = portfolio['Value']
 
-    print(portfolio)
     return finalValues
 
 

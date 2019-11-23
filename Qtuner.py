@@ -7,10 +7,10 @@ from file_util import save_to_memory_with_fname
 def file_name(args=[]):
     return '_'.join(args) + ".csv"
 
-rars = list(range(1, 10, 1))
+rars = list(range(7, 10, 2))
 alphas = list(range(1, 10, 1))
-gammas = list(range(1, 10, 1))
-epochs = [5, 10, 20, 40, 80, 120, 160, 200, 240]
+gammas = list(range(1, 10, 2))
+epochs = [40,60,80]
 tickers = ['AAPL', 'AMZN', 'DJIA', 'QQQ', 'SPY', 'VGT', 'XLI']
 
 train_perf_dir = "train_perf"
@@ -30,19 +30,27 @@ try:
 
                         perf = portfolio[-1] / portfolio[0]
 
-                        row_list.append({'rar':rar / 10,
+                        row = {'rar':rar / 10,
                                         'alpha':a / 10,
                                         'gamma':g / 10,
                                         'epochs':e,
                                         'ticker':ticker,
-                                        'perf': perf})
+                                        'perf': perf}
 
-                        args = [rar, a, g, e, ticker]
-                        args = list(map(lambda d: str(d), args))
+                        print(row)
 
-                        f_name = file_name(args)
-                        save_to_memory_with_fname(train_perf_dir, f_name, train_perf)
-                        save_to_memory_with_fname(test_port_dir, f_name, portfolio)
-                        save_to_memory_with_fname(test_order_dir, f_name, ordersDF)
+                        row_list.append(row)
+
+                        if perf >= 1.0:
+                            args = [rar, a, g, e, ticker]
+                            args = list(map(lambda d: str(d), args))
+
+                            f_name = file_name(args)
+                            save_to_memory_with_fname(train_perf_dir, f_name, train_perf)
+                            save_to_memory_with_fname(test_port_dir, f_name, portfolio)
+                            save_to_memory_with_fname(test_order_dir, f_name, ordersDF)
 finally:
-    save_to_memory_with_fname('q_result', 'results.csv', pd.DataFrame(data=row_list))
+    prev_results = pd.read_csv('q_result/results.csv')
+    prev_results = prev_results[['rar', 'alpha', 'gamma', 'epochs', 'ticker', 'perf']]
+    results = pd.concat([prev_results, pd.DataFrame(data=row_list)])
+    save_to_memory_with_fname('q_result', 'results2.csv', results)
