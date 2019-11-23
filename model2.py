@@ -65,7 +65,7 @@ with open('results_nnmodel2.txt', "a") as log_file:
             sc.transform(X_test[['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']])
         features = list(X_train.columns.values)
 
-        parameters = {'activation': ['relu'],
+        parameters = {'activation': ['relu', 'logistic'],
                       'batch_size': ['auto'],
                       'beta_1': [0.9, 0.95],
                       'beta_2': [0.999, 0.99],
@@ -80,7 +80,7 @@ with open('results_nnmodel2.txt', "a") as log_file:
                        #'hidden_layer_sizes': np.arange(5, 10)
                       }
         print(sorted(SCORERS.keys()))
-        clf = GridSearchCV(MLPClassifier(random_state=1),
+        clf = GridSearchCV(MLPClassifier(random_state=1, validation_fraction=0),
                                            param_grid=parameters,
                                            scoring='f1_macro', #'f1_weighted', #'precision_weighted',#'average_precision', #'f1_macro',
                                            cv=5,
