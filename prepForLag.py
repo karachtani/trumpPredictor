@@ -2,7 +2,7 @@ import pandas as pd
 from stock_util import get_single_stock_data, clean_stock_data
 
 for lag in range(0,8):
-    data = pd.read_csv("tweets_sentiments.csv")
+    data = pd.read_csv("tweets_sentiments2.csv")
     stock_data = get_single_stock_data(start_date = "2016-10-01", end_date="2019-11-19")
     cleaned_stock_data = clean_stock_data(stock_data, lag=lag)
 
@@ -30,8 +30,8 @@ for lag in range(0,8):
 
     stock_plus_tweet = stock_plus_tweet[['date','time','retweet_count',
                                          'neg', 'neu', 'pos', 'cmpd',
-                                         'IsTradingDay','numTweets','EMA5', 'EMA10', 'EMA20', 'Output']]
+                                         'IsTradingDay','is_retweet','numTweets','EMA5', 'EMA10', 'EMA20', 'Output']]
 
-    stock_plus_tweet.to_csv("lag" + str(lag) + ".csv", index=True)
+    stock_plus_tweet.to_csv("lag" + str(lag) + "_2.csv", index=True)
 
     print(stock_plus_tweet)

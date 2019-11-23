@@ -29,7 +29,8 @@ def clean(tweet):
     tweet = re.sub(r'RT\s@.+:\s', '', tweet)
     #add whitespace before urls incase he didnt
     tweet = re.sub(r'http', ' http', tweet)
-    tweet = re.sub(r'https?:\/\/.*\/\w*', '', tweet)
+    #tweet = re.sub(r'https?:\/\/.*\/\w*', '', tweet)
+    tweet = re.sub(r"http\S+", "", tweet)
     #remove Trump's ..... at begeinning of tweets
     tweet = re.sub(r'^\.+', '', tweet)
     #remove @ to change usernames into names
@@ -103,7 +104,7 @@ clean_df['time'] = pd.to_timedelta(clean_df['created_at']\
 # clean_df['avg_cmpd'] = clean_df.groupby('date')['cmpd'].transform('mean')
 
 
-clean_df.to_csv("tweets_sentiments.csv", index=True)
+clean_df.to_csv("tweets_sentiments2.csv", index=True)
 
 from stock_util import get_single_stock_data, clean_stock_data
 
@@ -129,9 +130,9 @@ stock_plus_tweet = pd.merge(stock_plus_tweet, number_of_tweets, how='left', on='
 
 stock_plus_tweet = stock_plus_tweet[['date','time','retweet_count',
                                      'neg', 'neu', 'pos', 'cmpd',
-                                     'IsTradingDay','numTweets','Output']]
+                                     'IsTradingDay','is_retweet','numTweets','Output']]
 
-stock_plus_tweet.to_csv("tweets_stock_data.csv", index=True)
+stock_plus_tweet.to_csv("tweets_stock_data2.csv", index=True)
 
 
 
