@@ -65,6 +65,8 @@ def sentiment_analyzer_scores_cmp(sentence):
 
 df = pd.read_csv(filepath_or_buffer='tweets110916_111219.csv',index_col='id_str')
 
+print(df.dtypes)
+
 clean_df = df.copy()
 
 clean_df['text'] = df['text']\
@@ -104,14 +106,19 @@ clean_df['time'] = pd.to_timedelta(clean_df['created_at']\
 # clean_df['avg_cmpd'] = clean_df.groupby('date')['cmpd'].transform('mean')
 
 
-clean_df.to_csv("tweets_sentiments2.csv", index=True)
+cdf= clean_df.copy()
+cdf.loc[clean_df['is_retweet'] == True, 'is_retweet'] = 1
+cdf.loc[clean_df['is_retweet'] == False, 'is_retweet'] = 0
+print(cdf)
+
+cdf.to_csv("tweets_sentiments2.csv", index=True)
 
 from stock_util import get_single_stock_data, clean_stock_data
 
 stock_data = get_single_stock_data(start_date = "2016-11-09", end_date="2019-11-12")
 cleaned_stock_data = clean_stock_data(stock_data)
 
-stock_plus_tweet = pd.merge(clean_df, cleaned_stock_data, how='outer', on='date')
+stock_plus_tweet = pd.merge(cdf, cleaned_stock_data, how='outer', on='date')
 
 
 stock_plus_tweet['IsTradingDay'] = stock_plus_tweet['Output'].isnull().map({True: 0, False: 1})
@@ -131,13 +138,10 @@ stock_plus_tweet = pd.merge(stock_plus_tweet, number_of_tweets, how='left', on='
 stock_plus_tweet = stock_plus_tweet[['date','time','retweet_count',
                                      'neg', 'neu', 'pos', 'cmpd',
                                      'IsTradingDay','is_retweet','numTweets','Output']]
-stock_plus_tweet.loc[stock_plus_tweet['is_retweet'] == 'True', 'is_retweet'] = 1
-stock_plus_tweet.loc[stock_plus_tweet['is_retweet'] == 'False', 'is_retweet'] = 0
-stock_plus_tweet.to_csv("tweets_stock_data2.csv", index=True)
-
 
 
 # print(stock_plus_tweet)
+stock_plus_tweet.to_csv("tweets_stock_data2.csv", index=True)
 
 
 """TODO"""
