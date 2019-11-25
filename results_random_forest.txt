@@ -1,0 +1,391 @@
+===================================================
+LAG 0
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None, 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 20}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=3,
+            min_weight_fraction_leaf=0.0, n_estimators=20, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.47      0.68      0.56      2121
+          1       0.57      0.35      0.44      2533
+
+avg / total       0.52      0.50      0.49      4654
+
+Confusion Matrix
+[[1447  674]
+ [1638  895]]
+Accuracy:
+0.5032230339492909
+===================================================
+LAG 1
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None, 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 25}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=3,
+            min_weight_fraction_leaf=0.0, n_estimators=25, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.41      0.47      0.44      2031
+          1       0.54      0.48      0.51      2623
+
+avg / total       0.48      0.48      0.48      4654
+
+Confusion Matrix
+[[ 952 1079]
+ [1356 1267]]
+Accuracy:
+0.4767941555651053
+===================================================
+LAG 2
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None, 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 20}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=3,
+            min_weight_fraction_leaf=0.0, n_estimators=20, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.47      0.04      0.08      2013
+          1       0.57      0.96      0.72      2641
+
+avg / total       0.53      0.57      0.44      4654
+
+Confusion Matrix
+[[  85 1928]
+ [  95 2546]]
+Accuracy:
+0.5653201547056296
+===================================================
+LAG 3
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'max_leaf_nodes': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 25}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=25, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.31      0.06      0.10      1986
+          1       0.56      0.90      0.69      2668
+
+avg / total       0.46      0.54      0.44      4654
+
+Confusion Matrix
+[[ 120 1866]
+ [ 264 2404]]
+Accuracy:
+0.5423291792006876
+===================================================
+LAG 0
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 25}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=25, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.46      0.65      0.54      2121
+          1       0.55      0.36      0.44      2533
+
+avg / total       0.51      0.49      0.48      4654
+
+Confusion Matrix
+[[1377  744]
+ [1620  913]]
+Accuracy:
+0.492049849591749
+===================================================
+LAG 1
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 25}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=3,
+            min_weight_fraction_leaf=0.0, n_estimators=25, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.40      0.43      0.42      2031
+          1       0.53      0.50      0.52      2623
+
+avg / total       0.48      0.47      0.47      4654
+
+Confusion Matrix
+[[ 882 1149]
+ [1308 1315]]
+Accuracy:
+0.4720670391061452
+===================================================
+LAG 2
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 20}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=20, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.60      0.04      0.07      2013
+          1       0.57      0.98      0.72      2641
+
+avg / total       0.59      0.57      0.44      4654
+
+Confusion Matrix
+[[  79 1934]
+ [  52 2589]]
+Accuracy:
+0.5732703051138806
+===================================================
+LAG 3
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 20}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=20, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.29      0.06      0.10      1986
+          1       0.56      0.89      0.69      2668
+
+avg / total       0.44      0.54      0.44      4654
+
+Confusion Matrix
+[[ 115 1871]
+ [ 287 2381]]
+Accuracy:
+0.5363128491620112
+===================================================
+LAG 4
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 4, 'n_estimators': 20}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=4,
+            min_weight_fraction_leaf=0.0, n_estimators=20, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.52      0.09      0.15      1815
+          1       0.62      0.95      0.75      2839
+
+avg / total       0.58      0.61      0.52      4654
+
+Confusion Matrix
+[[ 165 1650]
+ [ 150 2689]]
+Accuracy:
+0.6132359260850881
+===================================================
+LAG 5
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 25}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=25, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.58      0.31      0.41      1995
+          1       0.62      0.83      0.71      2659
+
+avg / total       0.60      0.61      0.58      4654
+
+Confusion Matrix
+[[ 623 1372]
+ [ 444 2215]]
+Accuracy:
+0.6097980232058444
+===================================================
+LAG 0
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 60}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=60, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.46      0.65      0.54      2121
+          1       0.55      0.36      0.44      2533
+
+avg / total       0.51      0.49      0.48      4654
+
+Confusion Matrix
+[[1371  750]
+ [1612  921]]
+Accuracy:
+0.4924795874516545
+===================================================
+LAG 0
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 60}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=60, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.47      0.68      0.56      2121
+          1       0.57      0.36      0.44      2533
+
+avg / total       0.53      0.51      0.49      4654
+
+Confusion Matrix
+[[1438  683]
+ [1616  917]]
+Accuracy:
+0.5060163300386764
+===================================================
+LAG 1
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 80}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=80, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.41      0.43      0.42      2031
+          1       0.54      0.51      0.52      2623
+
+avg / total       0.48      0.48      0.48      4654
+
+Confusion Matrix
+[[ 875 1156]
+ [1281 1342]]
+Accuracy:
+0.4763644177051998
+===================================================
+LAG 2
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.45      0.05      0.09      2013
+          1       0.57      0.96      0.71      2641
+
+avg / total       0.52      0.56      0.44      4654
+
+Confusion Matrix
+[[  95 1918]
+ [ 114 2527]]
+Accuracy:
+0.563386334336055
+===================================================
+LAG 3
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 90}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=90, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.34      0.06      0.10      1986
+          1       0.57      0.91      0.70      2668
+
+avg / total       0.47      0.55      0.44      4654
+
+Confusion Matrix
+[[ 119 1867]
+ [ 234 2434]]
+Accuracy:
+0.5485603781693167
+===================================================
+LAG 4
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=100, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.53      0.14      0.22      1815
+          1       0.63      0.92      0.75      2839
+
+avg / total       0.59      0.62      0.54      4654
+
+Confusion Matrix
+[[ 247 1568]
+ [ 222 2617]]
+Accuracy:
+0.6153846153846154
+===================================================
+LAG 5
+best parameters found: 
+{'criterion': 'entropy', 'max_depth': None, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 70}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='entropy',
+            max_depth=None, max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=70, n_jobs=1,
+            oob_score=False, random_state=1, verbose=0, warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.57      0.32      0.41      1995
+          1       0.61      0.82      0.70      2659
+
+avg / total       0.59      0.60      0.57      4654
+
+Confusion Matrix
+[[ 630 1365]
+ [ 485 2174]]
+Accuracy:
+0.6024924795874517
