@@ -36,11 +36,34 @@ def clean(tweet):
     #remove @ to change usernames into names
     tweet = re.sub(r'@realDonaldTrump', 'Trump', tweet)
     tweet = re.sub(r'@', '', tweet)
+    #tweet = re.sub(r'\s@[\w\d]+', ' ', tweet)
+    #tweet = re.sub(r'^@[\w\d]+', ' ', tweet)
     # Remove HTML special entities (e.g. &amp;)
     tweet = re.sub(r'\&\w*;', '', tweet)
     # remove hastags
     tweet = re.sub(r'#', '', tweet)
     return tweet
+
+def cleanlda(tweet):
+    #remove RT @username:
+    tweet = re.sub(r'RT\s@.+:\s', '', tweet)
+    #add whitespace before urls incase he didnt
+    tweet = re.sub(r'http', ' http', tweet)
+    #tweet = re.sub(r'https?:\/\/.*\/\w*', '', tweet)
+    tweet = re.sub(r"http\S+", "", tweet)
+    #remove Trump's ..... at begeinning of tweets
+    tweet = re.sub(r'^\.+', '', tweet)
+    #remove @ to change usernames into names
+    #tweet = re.sub(r'@realDonaldTrump', 'Trump', tweet)
+    #tweet = re.sub(r'@', '', tweet)
+    tweet = re.sub(r'\s@[\w\d]+', ' ', tweet)
+    tweet = re.sub(r'^@[\w\d]+', ' ', tweet)
+    # Remove HTML special entities (e.g. &amp;)
+    tweet = re.sub(r'\&\w*;', '', tweet)
+    # remove hastags
+    tweet = re.sub(r'#', '', tweet)
+    return tweet
+
 
 def sentiment_analyzer_scores_neg(sentence):
     score = analyser.polarity_scores(sentence)
@@ -66,13 +89,22 @@ def sentiment_analyzer_scores_cmp(sentence):
 df = pd.read_csv(filepath_or_buffer='tweets110916_111219.csv',index_col='id_str')
 
 clean_df = df.copy()
+cleandflda = df.copy()
 
 clean_df['text'] = df['text']\
     .map(clean)
 mask = (clean_df['text'].str.len() >= 20)
 clean_df = clean_df[mask]
-#print(df['text'].head(50))
-#print(clean_df['text'].head(50))
+
+cleandflda['text'] = df['text']\
+    .map(cleanlda)
+cleandflda = cleandflda[mask]
+
+
+#ldadf = pd.read_csv("stats/texts_lda.csv")
+#print(ldadf.columns)
+print(clean_df)
+print(cleandflda)
 
 analyser = SentimentIntensityAnalyzer()
 
@@ -115,47 +147,48 @@ print(cdf[cdf['is_retweet'].isnull()])
 print(cdf.dtypes)
 print(cdf.info())
 print(cdf.isnull().sum())
-print(cdf)
+#print(cdf)
 print('----------------')
 
+cleandflda.to_csv("tweets_sentiments4dla.csv", index=True)
 cdf.to_csv("tweets_sentiments2.csv", index=True)
 
-from stock_util import get_single_stock_data, clean_stock_data
-
-stock_data = get_single_stock_data(start_date = "2016-11-09", end_date="2019-11-12")
-cleaned_stock_data = clean_stock_data(stock_data)
-
-stock_plus_tweet = pd.merge(cdf, cleaned_stock_data, how='outer', on='date')
-
-
-stock_plus_tweet['IsTradingDay'] = stock_plus_tweet['Output'].isnull().map({True: 0, False: 1})
-
-stock_plus_tweet['Output'] = stock_plus_tweet['Output'].fillna(method='backfill')
-
-stock_plus_tweet = stock_plus_tweet[pd.notna(stock_plus_tweet['Output'])]
-stock_plus_tweet = stock_plus_tweet[pd.notna(stock_plus_tweet['text'])]
-
-number_of_tweets = stock_plus_tweet.groupby('date').count()
-
-number_of_tweets['numTweets'] = number_of_tweets['text']
-number_of_tweets = number_of_tweets['numTweets']
-
-stock_plus_tweet = pd.merge(stock_plus_tweet, number_of_tweets, how='left', on='date')
-
-stock_plus_tweet = stock_plus_tweet[['date','time','retweet_count',
-                                     'neg', 'neu', 'pos', 'cmpd',
-                                     'IsTradingDay','is_retweet','numTweets','Output']]
-
-
-# print(stock_plus_tweet)
-stock_plus_tweet.to_csv("tweets_stock_data2.csv", index=True)
-
-
-"""TODO"""
-#combine with stock data
-#might want to lemmatize, remove stop words, usernames, punctuation, etc for LDA
-#might want to extend stop words for LDA
-#granger causality to find lag to be used in classification NN
-
-
-
+# from stock_util import get_single_stock_data, clean_stock_data
+#
+# stock_data = get_single_stock_data(start_date = "2016-11-09", end_date="2019-11-12")
+# cleaned_stock_data = clean_stock_data(stock_data)
+#
+# stock_plus_tweet = pd.merge(cdf, cleaned_stock_data, how='outer', on='date')
+#
+#
+# stock_plus_tweet['IsTradingDay'] = stock_plus_tweet['Output'].isnull().map({True: 0, False: 1})
+#
+# stock_plus_tweet['Output'] = stock_plus_tweet['Output'].fillna(method='backfill')
+#
+# stock_plus_tweet = stock_plus_tweet[pd.notna(stock_plus_tweet['Output'])]
+# stock_plus_tweet = stock_plus_tweet[pd.notna(stock_plus_tweet['text'])]
+#
+# number_of_tweets = stock_plus_tweet.groupby('date').count()
+#
+# number_of_tweets['numTweets'] = number_of_tweets['text']
+# number_of_tweets = number_of_tweets['numTweets']
+#
+# stock_plus_tweet = pd.merge(stock_plus_tweet, number_of_tweets, how='left', on='date')
+#
+# stock_plus_tweet = stock_plus_tweet[['date','time','retweet_count',
+#                                      'neg', 'neu', 'pos', 'cmpd',
+#                                      'IsTradingDay','is_retweet','numTweets','Output']]
+#
+#
+# # print(stock_plus_tweet)
+# stock_plus_tweet.to_csv("tweets_stock_data2.csv", index=True)
+#
+#
+# """TODO"""
+# #combine with stock data
+# #might want to lemmatize, remove stop words, usernames, punctuation, etc for LDA
+# #might want to extend stop words for LDA
+# #granger causality to find lag to be used in classification NN
+#
+#
+#
