@@ -3,75 +3,147 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 from statsmodels.tsa.stattools import adfuller, grangercausalitytests
 from pandas.plotting import register_matplotlib_converters
+
 register_matplotlib_converters()
 import seaborn as sns
 from scipy.stats import zscore
 
+# most updated columns are
+# [['date','time','retweet_count','neg', 'neu', 'pos', 'cmpd', 'IsTradingDay','is_retweet','numTweets', 'EMA5', 'EMA10', 'EMA20', 'Dominant_Topic', 'Topic_Perc_Contrib', 'Keywords', 'topic_0', 'topic_1', 'topic_2', 'topic_3', 'topic_4', 'topic_5', 'topic_6', 'Output']]
 
-for lag in range(0,6):
-    data = pd.read_csv("../lag" + str(lag) + ".csv", index_col=0)
+filtertopics = 0
+useaverage = 0  # average and filter topics or drop neutral not implemented
+useema = 1
+dropneu = 0  # if using need to add split idx (length of df after dropping * .2 should be the #)
+cutoffval = 0.4  # drops rows with cmpd or avgcmpd between -cuttoff and +cutoff
 
-    def toint(output):
-        return int(output)
+for lag in range(0,8):
+    with open('lag_corr.txt', "a") as log_file:
+        data = pd.read_csv("../data_lag/lag" + str(lag) + "lda.csv", index_col=0)
 
 
-    def to_day(date):
-        dt = datetime.strptime(date, '%Y-%m-%d')
-        return (dt - datetime(2016, 11, 9)).days
+        def toint(output):
+            return int(output)
 
-    data['output'] = data['Output'] \
-        .map(toint)
-    data['day'] = data['date'] \
-        .map(to_day)
-    unaveraged_data = data[['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd','IsTradingDay', 'numTweets', 'output']]
-    print(unaveraged_data.columns)
 
-    if lag == 0:
-        data['avg_RTcount'] = data.groupby('day')['retweet_count'].transform('mean')
-        data['avg_neg'] = data.groupby('day')['neg'].transform('mean')
-        data['avg_neu'] = data.groupby('day')['neu'].transform('mean')
-        data['avg_pos'] = data.groupby('day')['pos'].transform('mean')
-        data['avg_cmpd'] = data.groupby('day')['cmpd'].transform('mean')
-        data['avg_time'] = data.groupby('day')['time'].transform('mean')
+        def to_day(date):
+            dt = datetime.strptime(date, '%Y-%m-%d')
+            return (dt - datetime(2016, 11, 9)).days
 
-        daily_data = data[['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'IsTradingDay', 'numTweets','output']]
-        daily_data = daily_data.drop_duplicates()
-        print(daily_data)
 
-        data_thentonow = daily_data.copy()
+        # print(data.columns)
+
+        data['output'] = data['Output'] \
+            .map(toint)
+        data['day'] = data['date'] \
+            .map(to_day)
+        data['is_retweet'] = data['is_retweet'] \
+            .map(toint)
+        # print(data.dtypes)
+        # print(data.info())
+        if filtertopics:
+            indexNames = data[(data['Dominant_Topic'] != 2) & (data['Dominant_Topic'] != 3)].index
+            data.drop(indexNames, inplace=True)
+            data = data.reset_index(drop=True)
+        # print(data)
+
+        if useema:
+            datacols = ['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'is_retweet',
+                        'numTweets',
+                        'EMA5', 'EMA10', 'EMA20', 'Topic_Perc_Contrib', 'topic_0', 'topic_1', 'topic_2', 'topic_3',
+                        'topic_4', 'topic_5', 'topic_6', 'output']
+        else:
+            datacols = ['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'is_retweet',
+                        'numTweets', 'Topic_Perc_Contrib', 'topic_0', 'topic_1', 'topic_2', 'topic_3', 'topic_4',
+                        'topic_5', 'topic_6', 'output']
+        data = data[datacols]
+        # print(data.columns)
+
+        if useaverage == 1:
+            data['avg_RTcount'] = data.groupby('day')['retweet_count'].transform('mean')
+            data['avg_neg'] = data.groupby('day')['neg'].transform('mean')
+            data['avg_neu'] = data.groupby('day')['neu'].transform('mean')
+            data['avg_pos'] = data.groupby('day')['pos'].transform('mean')
+            data['avg_cmpd'] = data.groupby('day')['cmpd'].transform('mean')
+            data['avg_time'] = data.groupby('day')['time'].transform('mean')
+
+            if useema:
+                avg_ema_traincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd',
+                                     'IsTradingDay', 'is_retweet', 'numTweets', 'EMA5', 'EMA10', 'EMA20', 'output']
+
+                daily_data = data[avg_ema_traincols]
+            else:
+                avg_traincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd',
+                                 'IsTradingDay', 'is_retweet', 'numTweets', 'output']
+
+
+                daily_data = data[avg_traincols]
+            daily_data.drop_duplicates()
+            data = daily_data.copy()
+
+        if dropneu:
+            if useaverage:
+                indexNames = data[(data['avg_cmpd'] <= cutoffval) & (data['avg_cmpd'] >= -cutoffval)].index
+            else:
+                indexNames = data[(data['cmpd'] <= cutoffval) & (data['cmpd'] >= -cutoffval)].index
+            # print(indexNames)
+            data.drop(indexNames, inplace=True)
+            # print(data)
+        data = data.reset_index(drop=True)
+        # print(data)
+
+        basic_xcols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'is_retweet',
+                       'numTweets', 'Topic_Perc_Contrib', 'topic_0', 'topic_1', 'topic_2', 'topic_3', 'topic_4',
+                       'topic_5', 'topic_6', 'output']
+
+        ema_xcols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'is_retweet',
+                     'numTweets', 'EMA5', 'EMA10', 'EMA20', 'Topic_Perc_Contrib', 'topic_0', 'topic_1', 'topic_2',
+                     'topic_3', 'topic_4', 'topic_5', 'topic_6', 'output']
+        if useaverage:
+            if useema:
+                XCOLS = avg_ema_traincols
+
+            else:
+                XCOLS = avg_traincols
+        elif not useaverage:
+            if useema:
+                XCOLS = ema_xcols
+            else:
+                XCOLS = basic_xcols
+        data = data[XCOLS]
+
+        data_thentonow = data.copy()
         data_thentonow.reindex(index=data_thentonow.index[::-1])
-        #colnames for full data
-        # colnames = ['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd','IsTradingDay', 'numTweets', 'output']
-        #colnames for daily data
-        colnames = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd','IsTradingDay', 'numTweets', 'output']
+        print(data_thentonow)
 
-        #'date', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd',
-        #'IsTradingDay', 'numTweets', 'Output', 'output', 'day'
-        #https://towardsdatascience.com/granger-causality-and-vector-auto-regressive-model-for-time-series-forecasting-3226a64889a6
+        # https://towardsdatascience.com/granger-causality-and-vector-auto-regressive-model-for-time-series-forecasting-3226a64889a6
         plt.clf()
-        corr = unaveraged_data.corr()
-        #sns.set()
+        corr = data_thentonow.corr()
+        # sns.set()
         # sns.heatmap(corr, xticklabels=corr.columns.values, yticklabels=corr.columns.values, annot=True, annot_kws={'size':12})
-        sns.heatmap(corr, xticklabels=corr.columns.values, yticklabels=corr.columns.values, annot=True, annot_kws={'size': 7}, cmap="YlGnBu").set_title('Lag '+str(lag)+' Correlation')
+        sns.heatmap(corr, xticklabels=corr.columns.values, yticklabels=corr.columns.values, annot=True,
+                    annot_kws={'size': 7}, cmap="YlGnBu").set_title('Lag ' + str(lag) + ' Correlation')
         heat_map = plt.gcf()
         # heat_map.set_size_inches(10,8)
         plt.xticks(fontsize=8)
         plt.yticks(fontsize=8)
-        plt.savefig('lag'+str(lag)+'_corr_heatmap.png')
+        plt.savefig('lag' + str(lag) + '_corr_heatmap.png')
         plt.clf()
 
-    for i in range(0,9):
-        granger_test_result = grangercausalitytests(data_thentonow[[colnames[i],colnames[9]]], maxlag=30, verbose=False)
-        optimal_lag = -1
-        F_test = -1.0
-        print('Granger Test Result '+str(lag)+' Lag' + colnames[i])
-        for key in granger_test_result.keys():
-            _F_test_ = granger_test_result[key][0]['params_ftest'][0]
-            if _F_test_ > F_test:
-                F_test = _F_test_
-                optimal_lag = key
-        print('optimal lag')
-        print(optimal_lag)
+        if lag == 0:
+            for i in range(0,len(XCOLS)):
+                granger_test_result = grangercausalitytests(data_thentonow[[XCOLS[i], XCOLS[-1]]], maxlag=30,
+                                                            verbose=False)
+                optimal_lag = -1
+                F_test = -1.0
+                print('Granger Test Result ' + str(lag) + ' Lag' + XCOLS[i])
+                for key in granger_test_result.keys():
+                    _F_test_ = granger_test_result[key][0]['params_ftest'][0]
+                    if _F_test_ > F_test:
+                        F_test = _F_test_
+                        optimal_lag = key
+                print('optimal lag')
+                print(optimal_lag)
 
 # #stationarity check
 # class StationarityTests:

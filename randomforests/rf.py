@@ -168,9 +168,8 @@ for lag in range(0, 8):
         #######################################################
         features = list(X_train.columns.values)
 
-
-        estimators = [10, 50, 100, 200, 500]
-        max_depths = [3, 6, 10, 15, 20]
+        estimators = [500, 600, 1000]  # [10, 50, 100, 200, 500]
+        max_depths = [20, 50, 100, 500]  # [3, 6, 10, 15, 20]
 
         grid_values = {'n_estimators': estimators, 'max_depth':max_depths}
 
