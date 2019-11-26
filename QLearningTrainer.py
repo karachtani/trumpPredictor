@@ -34,11 +34,11 @@ class StrategyLearner(object):
 
     # this method should create a QLearner, and train it for trading
     def train(self,
-              sv = 100000,
-              alpha=0.2,
+              sv = 10000,
+              alpha=0.8,
               gamma=0.9,
-              rar=0.8,
-              epochs=100):
+              rar=0.5,
+              epochs=20):
 
         # get the data and discretize them into buckets
         data = self.train_data
@@ -84,6 +84,7 @@ class StrategyLearner(object):
                 # print portValue
 
             portValues.append(portValue)
+            print(portValue)
 
         return pd.DataFrame(data=portValues)
 
@@ -92,7 +93,7 @@ class StrategyLearner(object):
     def test(self, symbol="IBM", \
              sd=dt.datetime(2010, 1, 1), \
              ed=dt.datetime(2011, 12, 31), \
-             sv=100000):
+             sv=10000):
 
         data = self.test_data
 

@@ -18,7 +18,7 @@ def get_single_stock_data(ticker='QQQ', start_date = "2016-11-01", end_date="201
         data = data.set_index('date')
 
     # print(meta_data)
-    # print(data)
+    print(data.head(10))
     data = data[data.index >= start_date]
     data = data[data.index <= end_date]
     data = data[['1. open','4. close','5. adjusted close']]
@@ -91,5 +91,5 @@ def clean_stock_data(data, lag=0):
     return data
 
 
-get_single_stock_data(ticker='VGT')
+get_single_stock_data(ticker='SPY')
 

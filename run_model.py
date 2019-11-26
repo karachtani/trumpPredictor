@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score,classification_report
 import numpy as np
 
-for lag in range(0, 6):
+for lag in range(1):
     if lag == 0:
         data = pd.read_csv("tweets_stock_data.csv", index_col=0)
     else:
@@ -84,6 +84,8 @@ for lag in range(0, 6):
     model.fit(X_train, y_train)
 
     predictions = model.predict(X_test)
+
+    print(predictions.head(50))
 
     print("==============================")
     print("LAG " + str(lag))

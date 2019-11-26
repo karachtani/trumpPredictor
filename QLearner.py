@@ -16,7 +16,7 @@ class QLearner(object):
                  alpha=0.2,
                  gamma=0.9,
                  rar=0.8,
-                 radr=0.99,
+                 radr=0.80,
                  verbose=False):
 
         self.verbose = verbose
@@ -29,6 +29,7 @@ class QLearner(object):
         self.a = 0
         self.Q = np.empty((num_states,num_actions))
         self.Q[:,:] = 0.0
+        np.random.seed(0)
 
     def querysetstate(self, s):
         """
