@@ -28,7 +28,7 @@ warnings.filterwarnings('ignore',
                         UserWarning,
                         'warnings_filtering',
                         )
-
+filtertopics = 0
 useaverage = 0
 useema = 1
 dropneu = 1
@@ -36,21 +36,45 @@ cutoffval = .2 #drops rows with cmpd or avgcmpd between -cuttoff and +cutoff
 
 with open('results_random_forest.txt', "a") as log_file:
     for lag in range(0,6):
-        data = pd.read_csv("lag"+str(lag)+".csv", index_col=0)
+        data = pd.read_csv("data_lag/lag" + str(lag) + "lda.csv", index_col=0)
+
+
         def toint(output):
             return int(output)
+
+
         def to_day(date):
             dt = datetime.strptime(date, '%Y-%m-%d')
-            return (dt - datetime(2016,11,9)).days
+            return (dt - datetime(2016, 11, 9)).days
 
 
-        data['output'] = data['Output']\
+        # print(data.columns)
+
+        data['output'] = data['Output'] \
             .map(toint)
-        data['day'] = data['date']\
+        data['day'] = data['date'] \
             .map(to_day)
+        data['is_retweet'] = data['is_retweet'] \
+            .map(toint)
+        # print(data.dtypes)
+        # print(data.info())
+        if filtertopics:
+            indexNames = data[(data['Dominant_Topic'] != 2) & (data['Dominant_Topic'] != 3)].index
+            data.drop(indexNames, inplace=True)
+            data = data.reset_index(drop=True)
+        # print(data)
+
         if useema:
-            data = data[['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd','IsTradingDay','numTweets','EMA5','EMA10','EMA20', 'output']]
-        else: data = data[['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd','IsTradingDay','numTweets', 'output']]
+            datacols = ['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'is_retweet',
+                        'numTweets',
+                        'EMA5', 'EMA10', 'EMA20', 'Topic_Perc_Contrib', 'topic_0', 'topic_1', 'topic_2', 'topic_3',
+                        'topic_4', 'topic_5', 'topic_6', 'output']
+        else:
+            datacols = ['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'is_retweet',
+                        'numTweets', 'Topic_Perc_Contrib', 'topic_0', 'topic_1', 'topic_2', 'topic_3', 'topic_4',
+                        'topic_5', 'topic_6', 'output']
+        data = data[datacols]
+        # print(data.columns)
 
         if useaverage == 1:
             data['avg_RTcount'] = data.groupby('day')['retweet_count'].transform('mean')
@@ -61,47 +85,61 @@ with open('results_random_forest.txt', "a") as log_file:
             data['avg_time'] = data.groupby('day')['time'].transform('mean')
 
             if useema:
-                avg_ema_traincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'IsTradingDay', 'numTweets', 'EMA5','EMA10', 'EMA20', 'output']
-                avg_ema_xtraincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'IsTradingDay', 'numTweets', 'EMA5','EMA10', 'EMA20']
-                avg_ema_scalecols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'numTweets', 'EMA5', 'EMA10', 'EMA20']
+                avg_ema_traincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd',
+                                     'IsTradingDay', 'is_retweet', 'numTweets', 'EMA5', 'EMA10', 'EMA20', 'output']
+                avg_ema_xtraincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd',
+                                      'IsTradingDay', 'is_retweet', 'numTweets', 'EMA5', 'EMA10', 'EMA20']
+                avg_ema_scalecols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd',
+                                     'numTweets', 'EMA5', 'EMA10', 'EMA20']
                 daily_data = data[avg_ema_traincols]
             else:
-                avg_traincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'IsTradingDay', 'numTweets', 'output']
-                avg_xtraincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'IsTradingDay', 'numTweets']
-                avg_scalecols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd', 'numTweets']
+                avg_traincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd',
+                                 'IsTradingDay', 'is_retweet', 'numTweets', 'output']
+                avg_xtraincols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd',
+                                  'IsTradingDay', 'is_retweet', 'numTweets']
+                avg_scalecols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd',
+                                 'numTweets']
                 daily_data = data[avg_traincols]
-            data = daily_data.drop_duplicates()
-        #print(data)
-        print(data.columns)
-
+            daily_data.drop_duplicates()
 
         if dropneu:
             if useaverage:
-                indexNames = data[(data['avg_cmpd'] >= cutoffval) & (data['avg_cmpd'] <= -cutoffval)].index
+                indexNames = data[(data['avg_cmpd'] <= cutoffval) & (data['avg_cmpd'] >= -cutoffval)].index
             else:
-                indexNames = data[(data['cmpd'] >= cutoffval) & (data['cmpd'] <= -cutoffval)].index
+                indexNames = data[(data['cmpd'] <= cutoffval) & (data['cmpd'] >= -cutoffval)].index
+            # print(indexNames)
             data.drop(indexNames, inplace=True)
+            # print(data)
+        data = data.reset_index(drop=True)
+        # print(data)
 
-        print(data.columns)
-        #'date', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd',
-        #'IsTradingDay', 'numTweets', 'Output', 'output', 'day'
+        # print(data.columns)
 
         if useaverage:
-            data_test = data[:217].sample(frac=1)
-            data_train = data[217:].sample(frac=1)
+            data_test = data[:315].sample(frac=1)
+            data_train = data[315:].sample(frac=1)
+        elif filtertopics:
+            data_test = data[:585].sample(frac=1)
+            data_train = data[585:].sample(frac=1)
         else:
             data_test = data[:4654].sample(frac=1)
             data_train = data[4654:].sample(frac=1)
-        #print(data_test)
-        #print(data_train)
+        # print(data_test)
+        # print(data_train)
 
         y_train = data_train['output']
         y_test = data_test['output']
 
-        basic_xcols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'numTweets']
-        basic_xscalecols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']
-        ema_xscalecols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets', 'EMA5', 'EMA10','EMA20']
-        ema_xcols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'numTweets', 'EMA5','EMA10', 'EMA20']
+        basic_xcols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'is_retweet',
+                       'numTweets', 'Topic_Perc_Contrib', 'topic_0', 'topic_1', 'topic_2', 'topic_3', 'topic_4',
+                       'topic_5', 'topic_6']
+        basic_xscalecols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets',
+                            'Topic_Perc_Contrib']
+        ema_xscalecols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets', 'EMA5', 'EMA10',
+                          'EMA20', 'Topic_Perc_Contrib']
+        ema_xcols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'is_retweet',
+                     'numTweets', 'EMA5', 'EMA10', 'EMA20', 'Topic_Perc_Contrib', 'topic_0', 'topic_1', 'topic_2',
+                     'topic_3', 'topic_4', 'topic_5', 'topic_6']
         if useaverage:
             if useema:
                 XCOLS = avg_ema_xtraincols
@@ -119,30 +157,31 @@ with open('results_random_forest.txt', "a") as log_file:
 
         X_train = data_train[XCOLS]
         X_test = data_test[XCOLS]
-        #print(X_train)
-        #print(len(data.date.unique())) 1081 dates but 1098 days
+        # print(X_train)
+        # print(len(data.date.unique())) 1081 dates but 1098 days
 
-        #columns are date,time,retweet_count,neg,neu,pos,cmpd,IsTradingDay,numTweets,Output
-        #scale columns that are numerical values not labeled classes
+        # columns are date,time,retweet_count,neg,neu,pos,cmpd,IsTradingDay,numTweets,Output
+        # scale columns that are numerical values not labeled classes
         sc = StandardScaler()
         sc.fit(X_train[sc_cols])
         X_train[sc_cols] = \
             sc.transform(X_train[sc_cols])
         X_test[sc_cols] = \
             sc.transform(X_test[sc_cols])
+
         features = list(X_train.columns.values)
 
-        parameters = {"n_estimators": range(10, 110, 10),
+        estimators = [10, 25, 50, 75, 100, 150, 200, 250, 500]
+        max_depths = [3, 6, 10, 15, 20, None]
+
+        parameters = {"n_estimators": estimators,
                       "criterion": ["gini", "entropy"],
-                      "max_depth": list(range(2, 20, 2)) + [None],
-                      "min_samples_split": list(range(2, 6)),
-                      "min_samples_leaf": list(range(1, 4)),
-                      "max_features": [None, "auto"],
+                      "max_depth": max_depths,
                       }
         print(sorted(SCORERS.keys()))
         clf = GridSearchCV(RandomForestClassifier(random_state=1),
                                            param_grid=parameters,
-                                           scoring='f1_macro', #'f1_weighted', #'precision_weighted',#'average_precision', #'f1_macro',
+                                           scoring='accuracy', #'f1_weighted', #'precision_weighted',#'average_precision', #'f1_macro',
                                            cv=3, #5
                                            refit=True,
                                            verbose=1, #10 to see results
