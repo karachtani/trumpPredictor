@@ -17,6 +17,9 @@ import itertools
 from datetime import datetime
 import warnings
 
+#most updated columns are
+#[['date','time','retweet_count','neg', 'neu', 'pos', 'cmpd', 'IsTradingDay','is_retweet','numTweets', 'EMA5', 'EMA10', 'EMA20', 'Dominant_Topic', 'Topic_Perc_Contrib', 'Keywords', 'topic_0', 'topic_1', 'topic_2', 'topic_3', 'topic_4', 'topic_5', 'topic_6', 'Output']]
+
 # filter warnings so you can see output
 # otherwise terminal gets filled with
 #    UndefinedMetricWarning: F - score is ill - defined and being set to 0.0 in labels with no predicted samples.'precision', 'predicted', average, warn_for)
@@ -32,15 +35,15 @@ with warnings.catch_warnings():
 # with warnings.catch_warnings():
 #    warnings.simplefilter("ignore")
 #    fxn()
-
-useaverage = 0
+filtertopics = 0
+useaverage = 0 #average and filter topics or drop neutral not implemented  
 useema = 1
-dropneu = 1
-cutoffval = .4  # drops rows with cmpd or avgcmpd between -cuttoff and +cutoff
+dropneu = 1 #if using need to add split idx (length of df after dropping * .2 should be the #)
+cutoffval = 0.4  # drops rows with cmpd or avgcmpd between -cuttoff and +cutoff
 
 for lag in range(0, 8):
-    with open('results_nn_dropneupt4cut.txt', "a") as log_file:
-        data = pd.read_csv("lag" + str(lag) + "_2.csv", index_col=0)
+    with open('nn_resultswlda.txt', "a") as log_file:
+        data = pd.read_csv("lag" + str(lag) + "lda.csv", index_col=0)
 
 
         def toint(output):
@@ -60,15 +63,23 @@ for lag in range(0, 8):
             .map(to_day)
         data['is_retweet'] = data['is_retweet'] \
             .map(toint)
+        print(data.dtypes)
+        print(data.info())
+        if filtertopics:
+            indexNames = data[(data['Dominant_Topic'] != 2) & (data['Dominant_Topic'] != 3)].index
+            data.drop(indexNames, inplace=True)
+            data = data.reset_index(drop=True)
+        print(data)
 
+        
         if useema:
-            data = data[
-                ['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'is_retweet', 'numTweets',
-                 'EMA5', 'EMA10', 'EMA20', 'output']]
+            datacols = ['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'is_retweet', 'numTweets',
+                 'EMA5', 'EMA10', 'EMA20', 'Topic_Perc_Contrib','topic_0', 'topic_1', 'topic_2', 'topic_3', 'topic_4', 'topic_5', 'topic_6', 'output']
         else:
-            data = data[
-                ['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'is_retweet', 'numTweets',
-                 'output']]
+            datacols = ['day', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'is_retweet', 'numTweets', 'Topic_Perc_Contrib','topic_0', 'topic_1', 'topic_2', 'topic_3', 'topic_4', 'topic_5', 'topic_6', 'output']
+        data = data[datacols]
+        print(data.columns)
+        
 
         if useaverage == 1:
             data['avg_RTcount'] = data.groupby('day')['retweet_count'].transform('mean')
@@ -94,22 +105,29 @@ for lag in range(0, 8):
                 avg_scalecols = ['day', 'avg_time', 'avg_RTcount', 'avg_neg', 'avg_neu', 'avg_pos', 'avg_cmpd',
                                  'numTweets']
                 daily_data = data[avg_traincols]
-            data = daily_data.drop_duplicates()
-
+            daily_data.drop_duplicates()
+            
+        
         if dropneu:
             if useaverage:
-                indexNames = data[(data['avg_cmpd'] >= cutoffval) & (data['avg_cmpd'] <= -cutoffval)].index
+                indexNames = data[(data['avg_cmpd'] <= cutoffval) & (data['avg_cmpd'] >= -cutoffval)].index
             else:
-                indexNames = data[(data['cmpd'] >= cutoffval) & (data['cmpd'] <= -cutoffval)].index
+                indexNames = data[(data['cmpd'] <= cutoffval) & (data['cmpd'] >= -cutoffval)].index
+            print(indexNames)
             data.drop(indexNames, inplace=True)
+            print(data)
+        data = data.reset_index(drop=True)
+        print(data)
 
+        
         print(data.columns)
-        # 'date', 'time', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd',
-        # 'IsTradingDay', 'numTweets', 'Output', 'output', 'day'
 
         if useaverage:
-            data_test = data[:217].sample(frac=1)
-            data_train = data[217:].sample(frac=1)
+            data_test = data[:315].sample(frac=1)
+            data_train = data[315:].sample(frac=1)
+        elif filtertopics:
+            data_test = data[:585].sample(frac=1)
+            data_train = data[585:].sample(frac=1) 
         else:
             data_test = data[:4654].sample(frac=1)
             data_train = data[4654:].sample(frac=1)
@@ -120,12 +138,12 @@ for lag in range(0, 8):
         y_test = data_test['output']
 
         basic_xcols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'is_retweet',
-                       'numTweets']
-        basic_xscalecols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets']
+                       'numTweets','Topic_Perc_Contrib','topic_0', 'topic_1', 'topic_2', 'topic_3', 'topic_4', 'topic_5', 'topic_6']
+        basic_xscalecols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets', 'Topic_Perc_Contrib']
         ema_xscalecols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'numTweets', 'EMA5', 'EMA10',
-                          'EMA20']
+                          'EMA20', 'Topic_Perc_Contrib']
         ema_xcols = ['time', 'day', 'retweet_count', 'neg', 'neu', 'pos', 'cmpd', 'IsTradingDay', 'is_retweet',
-                     'numTweets', 'EMA5', 'EMA10', 'EMA20']
+                     'numTweets', 'EMA5', 'EMA10', 'EMA20','Topic_Perc_Contrib','topic_0', 'topic_1', 'topic_2', 'topic_3', 'topic_4', 'topic_5', 'topic_6']
         if useaverage:
             if useema:
                 XCOLS = avg_ema_xtraincols
