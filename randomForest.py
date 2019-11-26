@@ -172,7 +172,7 @@ with open('results_random_forest.txt', "a") as log_file:
         features = list(X_train.columns.values)
 
         estimators = [10, 25, 50, 75, 100, 150, 200, 250, 500]
-        max_depths = [3, 6, 10, 15, 20, None]
+        max_depths = [3, 6, 10, 15, 20]
 
         parameters = {"n_estimators": estimators,
                       "criterion": ["gini", "entropy"],

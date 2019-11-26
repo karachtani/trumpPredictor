@@ -35,7 +35,7 @@ cutoffval = 0.4  # drops rows with cmpd or avgcmpd between -cuttoff and +cutoff
 
 for lag in range(0, 8):
     with open('rf_wlda.txt', "a") as log_file:
-        data = pd.read_csv("lag" + str(lag) + "lda.csv", index_col=0)
+        data = pd.read_csv("data_lag/lag" + str(lag) + "lda.csv", index_col=0)
 
 
         def toint(output):
@@ -168,12 +168,12 @@ for lag in range(0, 8):
         #######################################################
         features = list(X_train.columns.values)
 
-        estimators = [500, 600, 1000]  # [10, 50, 100, 200, 500]
-        max_depths = [20, 50, 100, 500]  # [3, 6, 10, 15, 20]
+        estimators = [10, 50, 100, 200, 500]
+        max_depths =  [3, 6, 10, 15, 20]
 
         grid_values = {'n_estimators': estimators, 'max_depth':max_depths}
 
-        clf = GridSearchCV(RandomForestClassifier(), grid_values, scoring='roc_auc', n_jobs=-1, verbose=0, cv=3, return_train_score=True)
+        clf = GridSearchCV(RandomForestClassifier(), grid_values, scoring='roc_auc', n_jobs=-1, verbose=1, cv=3, return_train_score=True)
         clf.fit(X_train, y_train)
         # print best parameter after tuning
         out = "==================================================="
@@ -220,7 +220,7 @@ for lag in range(0, 8):
         best_score = clf.best_score_
         max_depth_list = list(clf.cv_results_['param_max_depth'].data)
         estimators_list = list(clf.cv_results_['param_n_estimators'].data)
-        print(clf.cv_results_)
+        # print(clf.cv_results_)
 
 #         plt.clf()
 #         sns.set_style("whitegrid")
