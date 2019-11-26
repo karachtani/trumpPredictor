@@ -106,6 +106,7 @@ for lag in range(0, 8):
                                  'numTweets']
                 daily_data = data[avg_traincols]
             daily_data.drop_duplicates()
+            data = daily_data.copy()
             
         
         if dropneu:
