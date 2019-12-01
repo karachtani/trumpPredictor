@@ -33,14 +33,14 @@ def join_preds_prices(preds, prices):
 
     return joined
 
-preds = pd.read_csv('bestnnres.csv')
+preds = pd.read_csv('rf_predictions.csv')
 
 preds['day'] = preds['day'].map(from_day)
 
 preds = preds.groupby('day').sum()
 
 preds = preds['y_predicted']
-orders = map_predictions_to_orders(preds)
+
 
 date_format = '%Y-%m-%d'
 prices = get_single_stock_data('SPY', start_date=preds.index.min().strftime(date_format), end_date=preds.index.max().strftime(date_format))
@@ -50,6 +50,9 @@ prices['price'] = prices['5. adjusted close']
 prices = prices['price']
 
 joined = join_preds_prices(preds, prices)
+
+orders = map_predictions_to_orders(joined['pred'])
+
 
 portfolio = compute_portvals(ordersDF=orders, prices=joined['price'], start_val=10000)
 
