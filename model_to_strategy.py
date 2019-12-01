@@ -33,7 +33,7 @@ def join_preds_prices(preds, prices):
 
     return joined
 
-preds = pd.read_csv('rf_predictions.csv')
+preds = pd.read_csv('svmres.csv')
 
 preds['day'] = preds['day'].map(from_day)
 
@@ -59,7 +59,17 @@ portfolio = compute_portvals(ordersDF=orders, prices=joined['price'], start_val=
 print(portfolio)
 
 final_df = pd.DataFrame({'price':joined['price'] / joined['price'].iloc[0], 'value': portfolio / portfolio.iloc[0]})
-final_df.plot()
+
+ax1 = final_df['price'].plot(label='SPY Price')
+ax1.set_ylabel('SPY Price')
+handles1, labels1 = ax1.get_legend_handles_labels()
+ax1.legend(handles1, labels1)
+
+ax2 = final_df['value'].plot(secondary_y=True, label='% Returns')
+ax2.set_ylabel('% Returns')
+handles2, labels2 = ax2.get_legend_handles_labels()
+ax2.legend(handles2, labels2)
+
 plt.show()
 
 
