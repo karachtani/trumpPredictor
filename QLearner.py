@@ -74,7 +74,3 @@ class QLearner(object):
         if self.verbose: print("s =", s_prime, "a =", action, "r =", r)
 
         return action
-
-
-if __name__ == "__main__":
-    print("Remember Q from Star Trek? Well, this isn't him")

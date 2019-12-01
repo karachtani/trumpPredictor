@@ -27,7 +27,7 @@ def compute_portvals(ordersDF = None, prices = None, start_val=1000000):
     for index, order in ordersDF.iterrows():
         date = order['Date']
         shares = int(order['Shares'])
-        price = prices.get_value(index=date, col='price')
+        price = prices[date]
 
         if order["Order"] == "BUY":
             portfolio.loc[date:,'Shares'] += shares
@@ -40,7 +40,7 @@ def compute_portvals(ordersDF = None, prices = None, start_val=1000000):
 
     # multiplying the number of shares by the value of those shares then adding it to cash and putting it into value
     # the indices assume the following: share #'s are the first columns in portfolio, SPY is the first column in stockVals
-    portfolio['Value'] = portfolio['Cash'] + portfolio['Shares'] * prices['price']
+    portfolio['Value'] = portfolio['Cash'] + portfolio['Shares'] * prices
     portfolio['Value'].ffill()
 
     finalValues = portfolio['Value']
