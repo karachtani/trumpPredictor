@@ -33,8 +33,8 @@ from nltk.corpus import stopwords
 stop_words = stopwords.words('english')
 stop_words.extend(['from', 'subject', 're', 'edu', 'use'])
 print(stop_words)
-xx
-df = pd.read_csv("../tweets_sentiments2.csv", index_col=0)
+
+df = pd.read_csv("../tweets_sentiments.csv", index_col=0)
 
 # Convert to list
 data = df.text.values.tolist()

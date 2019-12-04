@@ -43,7 +43,7 @@ cutoffval = 0.4  # drops rows with cmpd or avgcmpd between -cuttoff and +cutoff
 
 for lag in range(0, 8):
     with open('nn_resultswlda.txt', "a") as log_file:
-        data = pd.read_csv("lag" + str(lag) + "lda.csv", index_col=0)
+        data = pd.read_csv("data_lag/lag" + str(lag) + "lda.csv", index_col=0)
 
 
         def toint(output):

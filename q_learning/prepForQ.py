@@ -25,7 +25,7 @@ def get_q_data(ticker='QQQ', start_date = "2016-11-01", end_date="2019-11-18"):
         stock_data.reset_index(level=0, inplace=True)
         stock_data = stock_data.rename(columns={'index':'date'})
 
-        tweet_data = pd.read_csv("tweets_sentiments.csv")
+        tweet_data = pd.read_csv("../tweets_sentiments.csv")
 
         number_of_tweets = tweet_data.groupby('date').count()
 

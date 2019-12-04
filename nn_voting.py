@@ -25,7 +25,7 @@ warnings.filterwarnings("always")
 
 with open('nn_voter_log_wEMA_tuned.txt', "a") as log_file:
     for lag in [2,3,4]: #range(0, 8):
-        data = pd.read_csv("lag"+str(lag)+".csv", index_col=0)
+        data = pd.read_csv("data_lag/lag"+str(lag)+".csv", index_col=0)
 
         """ DATA PREP """
         def toint(output):
