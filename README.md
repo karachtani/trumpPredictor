@@ -124,7 +124,7 @@ contains the words and weights for topics assigned to tweets in lagxlda.csv file
 #### tweets110916_111219.csv
 contains tweet info downloaded from trumptwitterarchive.com. Collected from when he got elected 11/9/16 to 11/12/19
 
-#### tweets_sentiments2.csv
+#### tweets_sentiments.csv
 data for computetopics or prepforlag
 
 #### tweets_sentiments4dla.csv
