@@ -6,6 +6,9 @@ Written by Sierra Wulfson, Colby Tobin, and Karan Achtani in CS 6220 during Fall
 ## Running
 
 ## File Explanations
+### q_data/
+stock and twitter data that has been preprocessed for q learning is cached here to avoid recomputation 
+ 
 ### q_learning/
 #### q_experiment.py
 q learner taught with optimal hyperparameters as found in Qtuner.py; this produced the graphs presented in workshop
@@ -19,6 +22,8 @@ Trains the Q learner by telling it what the rewards of certain actions are
 #### qTuner.py
 Gridsearch for Q learner to optimize hyper parameters
 
+#### results_q_tuning.py
+The results of the gridsearch in qTuner.py
 
 ### randomforests/
 #### randomforestcode.py

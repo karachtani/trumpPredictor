@@ -51,4 +51,4 @@ try:
                             save_to_memory_with_fname(test_port_dir, f_name, portfolio)
                             save_to_memory_with_fname(test_order_dir, f_name, ordersDF)
 finally:
-    save_to_memory_with_fname('q_result', 'results2.csv', pd.DataFrame(data=row_list))
+    save_to_memory_with_fname('q_result', 'results_q_tuning.csv', pd.DataFrame(data=row_list))
