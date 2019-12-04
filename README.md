@@ -3,7 +3,21 @@ Written by Sierra Wulfson, Colby Tobin, and Karan Achtani in CS 6220 during Fall
 
 ## Installation
 
+- Create a new Virtual Environment: https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/
+1. python3 -m venv ./venv
+2. source venv/bin/activate
+3. pip3 install -r requirements.txt
+
 ## Running
+
+- Initialize Virtual Environment
+1. source venv/bin/activate
+2. pip3 install -r requirements.txt
+
+- Run Code:
+1. Run from within trumpPredictor directory
+2. Make sure virtual environment "venv" is active
+3. Run .py files with as "python *.py" for any file *
 
 ## File Explanations
 ### nn_model/
