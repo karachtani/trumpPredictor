@@ -11,7 +11,7 @@ Written by Sierra Wulfson, Colby Tobin, and Karan Achtani in CS 6220 during Fall
 #### mlpcode.py
 code that runs a tuned MLP and makes predictions csv for model_to_strategy2.py
 
-#### model2.py
+#### model.py
 tunes mlp
 
 #### nn_voting.py
