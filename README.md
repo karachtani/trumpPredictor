@@ -6,6 +6,9 @@ Written by Sierra Wulfson, Colby Tobin, and Karan Achtani in CS 6220 during Fall
 ## Running
 
 ## File Explanations
+### nn_results
+Various results files from various experiments with the Neural Net model
+
 ### q_data/
 stock and twitter data that has been preprocessed for q learning is cached here to avoid recomputation 
  
@@ -68,9 +71,11 @@ Test predictions for the SVM strategy
 #### lagXsvm.png files 
 gridsearchcv tuning heat maps that can be generated from svmcode.py. These are from original data files
 
-
 #### svmcode.py
 runs a svm and makes predictions csv for model_to_strategy2.py
+
+#### svmres.csv
+Test predictions from the SVM strategy
 
 ### /
 
@@ -114,9 +119,6 @@ Contains all 3rd party packages that we use. To install, open a virtual environm
 
 #### stock_util.py
 Utility file to acquire and preprocess stock data. Also contains some other relevant functions to deal with stock data.
-
-#### svmres.csv
-Test predictions from the SVM strategy
 
 #### topicdefs.txt
 contains the words and weights for topics assigned to tweets in lagxlda.csv files
