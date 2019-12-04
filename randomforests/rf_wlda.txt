@@ -1,105 +1,121 @@
 ===================================================
 LAG 0
 best parameters found: 
-{'max_depth': 20, 'n_estimators': 500}
+{'max_depth': 500, 'n_estimators': 500}
 RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-                       max_depth=20, max_features='auto', max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, n_estimators=500,
-                       n_jobs=None, oob_score=False, random_state=None,
-                       verbose=0, warm_start=False)
+            max_depth=500, max_features='auto', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=500, n_jobs=1,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
 Classification Report
-              precision    recall  f1-score   support
+             precision    recall  f1-score   support
 
-          -1       0.46      0.75      0.57      2202
-           1       0.49      0.21      0.30      2452
+         -1       0.47      0.77      0.58      2202
+          1       0.50      0.21      0.30      2452
 
-    accuracy                           0.47      4654
-   macro avg       0.48      0.48      0.44      4654
-weighted avg       0.48      0.47      0.43      4654
+avg / total       0.49      0.47      0.43      4654
 
 Confusion Matrix
-[[1661  541]
- [1927  525]]
+[[1695  507]
+ [1940  512]]
 Accuracy:
-0.46970348087666525
+0.47421572840567255
+===================================================
+LAG 0
+best parameters found: 
+{'max_depth': 500, 'n_estimators': 1000}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+            max_depth=500, max_features='auto', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=1000, n_jobs=1,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.46      0.79      0.58      2202
+          1       0.49      0.18      0.26      2452
+
+avg / total       0.48      0.47      0.42      4654
+
+Confusion Matrix
+[[1736  466]
+ [2007  445]]
+Accuracy:
+0.4686291362269016
 ===================================================
 LAG 1
 best parameters found: 
-{'max_depth': 20, 'n_estimators': 500}
+{'max_depth': 100, 'n_estimators': 600}
 RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-                       max_depth=20, max_features='auto', max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, n_estimators=500,
-                       n_jobs=None, oob_score=False, random_state=None,
-                       verbose=0, warm_start=False)
+            max_depth=100, max_features='auto', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=600, n_jobs=1,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
 Classification Report
-              precision    recall  f1-score   support
+             precision    recall  f1-score   support
 
-          -1       0.63      0.05      0.09      2111
-           1       0.55      0.98      0.71      2543
+         -1       0.48      0.12      0.19      2111
+          1       0.55      0.89      0.68      2543
 
-    accuracy                           0.56      4654
-   macro avg       0.59      0.51      0.40      4654
-weighted avg       0.59      0.56      0.43      4654
+avg / total       0.52      0.54      0.46      4654
 
 Confusion Matrix
-[[ 103 2008]
- [  61 2482]]
+[[ 251 1860]
+ [ 272 2271]]
 Accuracy:
-0.555436183927804
+0.5418994413407822
 ===================================================
 LAG 2
 best parameters found: 
-{'max_depth': 20, 'n_estimators': 500}
+{'max_depth': 500, 'n_estimators': 1000}
 RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-                       max_depth=20, max_features='auto', max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, n_estimators=500,
-                       n_jobs=None, oob_score=False, random_state=None,
-                       verbose=0, warm_start=False)
+            max_depth=500, max_features='auto', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=1000, n_jobs=1,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
 Classification Report
-              precision    recall  f1-score   support
+             precision    recall  f1-score   support
 
-          -1       0.46      0.92      0.61      2130
-           1       0.58      0.09      0.16      2524
+         -1       0.46      0.92      0.62      2130
+          1       0.61      0.11      0.18      2524
 
-    accuracy                           0.47      4654
-   macro avg       0.52      0.51      0.39      4654
-weighted avg       0.53      0.47      0.37      4654
+avg / total       0.54      0.48      0.38      4654
 
 Confusion Matrix
-[[1960  170]
- [2287  237]]
+[[1957  173]
+ [2256  268]]
 Accuracy:
-0.4720670391061452
+0.47808336914482163
 ===================================================
 LAG 3
 best parameters found: 
-{'max_depth': 20, 'n_estimators': 200}
+{'max_depth': 100, 'n_estimators': 600}
 RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-                       max_depth=20, max_features='auto', max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, n_estimators=200,
-                       n_jobs=None, oob_score=False, random_state=None,
-                       verbose=0, warm_start=False)
+            max_depth=100, max_features='auto', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=600, n_jobs=1,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
 Classification Report
-              precision    recall  f1-score   support
+             precision    recall  f1-score   support
 
-          -1       0.85      0.04      0.08      2104
-           1       0.56      0.99      0.71      2550
+         -1       0.83      0.04      0.08      2104
+          1       0.56      0.99      0.71      2550
 
-    accuracy                           0.56      4654
-   macro avg       0.70      0.52      0.39      4654
-weighted avg       0.69      0.56      0.43      4654
+avg / total       0.68      0.56      0.43      4654
 
 Confusion Matrix
-[[  84 2020]
- [  15 2535]]
+[[  87 2017]
+ [  18 2532]]
 Accuracy:
 0.5627417275461968
 ===================================================
@@ -107,102 +123,118 @@ LAG 4
 best parameters found: 
 {'max_depth': 20, 'n_estimators': 500}
 RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-                       max_depth=20, max_features='auto', max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, n_estimators=500,
-                       n_jobs=None, oob_score=False, random_state=None,
-                       verbose=0, warm_start=False)
+            max_depth=50, max_features='auto', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=500, n_jobs=1,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
 Classification Report
-              precision    recall  f1-score   support
+             precision    recall  f1-score   support
 
-          -1       0.85      0.01      0.01      1991
-           1       0.57      1.00      0.73      2663
+         -1       0.50      0.00      0.00      1991
+          1       0.57      1.00      0.73      2663
 
-    accuracy                           0.57      4654
-   macro avg       0.71      0.50      0.37      4654
-weighted avg       0.69      0.57      0.42      4654
+avg / total       0.54      0.57      0.42      4654
 
 Confusion Matrix
-[[  11 1980]
- [   2 2661]]
+[[   5 1986]
+ [   5 2658]]
 Accuracy:
-0.5741297808336915
+0.5721959604641169
 ===================================================
 LAG 5
 best parameters found: 
-{'max_depth': 20, 'n_estimators': 500}
+{'max_depth': 500, 'n_estimators': 600}
 RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-                       max_depth=20, max_features='auto', max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, n_estimators=500,
-                       n_jobs=None, oob_score=False, random_state=None,
-                       verbose=0, warm_start=False)
+            max_depth=500, max_features='auto', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=600, n_jobs=1,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
 Classification Report
-              precision    recall  f1-score   support
+             precision    recall  f1-score   support
 
-          -1       0.68      0.15      0.24      2138
-           1       0.56      0.94      0.71      2516
+         -1       0.62      0.07      0.13      2138
+          1       0.55      0.96      0.70      2516
 
-    accuracy                           0.58      4654
-   macro avg       0.62      0.54      0.47      4654
-weighted avg       0.62      0.58      0.49      4654
+avg / total       0.58      0.55      0.44      4654
 
 Confusion Matrix
-[[ 314 1824]
- [ 147 2369]]
+[[ 155 1983]
+ [  95 2421]]
 Accuracy:
-0.5764933390631715
+0.5535023635582295
 ===================================================
 LAG 6
 best parameters found: 
-{'max_depth': 20, 'n_estimators': 500}
+{'max_depth': 500, 'n_estimators': 600}
 RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-                       max_depth=20, max_features='auto', max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, n_estimators=500,
-                       n_jobs=None, oob_score=False, random_state=None,
-                       verbose=0, warm_start=False)
+            max_depth=500, max_features='auto', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=600, n_jobs=1,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
 Classification Report
-              precision    recall  f1-score   support
+             precision    recall  f1-score   support
 
-          -1       0.87      0.03      0.06      2243
-           1       0.52      1.00      0.69      2411
+         -1       0.89      0.03      0.05      2243
+          1       0.52      1.00      0.69      2411
 
-    accuracy                           0.53      4654
-   macro avg       0.70      0.51      0.37      4654
-weighted avg       0.69      0.53      0.38      4654
+avg / total       0.70      0.53      0.38      4654
 
 Confusion Matrix
-[[  69 2174]
- [  10 2401]]
+[[  62 2181]
+ [   8 2403]]
 Accuracy:
-0.5307262569832403
+0.5296519123334765
 ===================================================
 LAG 7
 best parameters found: 
-{'max_depth': 20, 'n_estimators': 500}
+{'max_depth': 50, 'n_estimators': 500}
 RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-                       max_depth=20, max_features='auto', max_leaf_nodes=None,
-                       min_impurity_decrease=0.0, min_impurity_split=None,
-                       min_samples_leaf=1, min_samples_split=2,
-                       min_weight_fraction_leaf=0.0, n_estimators=500,
-                       n_jobs=None, oob_score=False, random_state=None,
-                       verbose=0, warm_start=False)
+            max_depth=50, max_features='auto', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=500, n_jobs=1,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
 Classification Report
-              precision    recall  f1-score   support
+             precision    recall  f1-score   support
 
-          -1       0.67      0.03      0.06      2273
-           1       0.52      0.98      0.68      2381
+         -1       0.66      0.02      0.03      2273
+          1       0.51      0.99      0.68      2381
 
-    accuracy                           0.52      4654
-   macro avg       0.59      0.51      0.37      4654
-weighted avg       0.59      0.52      0.38      4654
+avg / total       0.58      0.52      0.36      4654
 
 Confusion Matrix
-[[  73 2200]
- [  36 2345]]
+[[  38 2235]
+ [  20 2361]]
 Accuracy:
-0.5195530726256983
+0.5154705629565964
+===================================================
+LAG 0
+best parameters found: 
+{'max_depth': 20, 'n_estimators': 500}
+RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+            max_depth=20, max_features='auto', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=500, n_jobs=1,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
+Classification Report
+             precision    recall  f1-score   support
+
+         -1       0.46      0.79      0.58      2202
+          1       0.47      0.17      0.25      2452
+
+avg / total       0.46      0.46      0.40      4654
+
+Confusion Matrix
+[[1735  467]
+ [2044  408]]
+Accuracy:
+0.46046411688869787

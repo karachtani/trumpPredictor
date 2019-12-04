@@ -26,11 +26,17 @@ Gridsearch for Q learner to optimize hyper parameters
 The results of the gridsearch in qTuner.py
 
 ### randomforests/
+#### rf.py 
+implements and tunes a Random Forest model
+
 #### randomforestcode.py
-Runs a Random Forest and makes the bestrfresaggg.csv file used for model_to_strategy2.py
+Runs a tuned Random Forest and makes the bestrfresaggg.csv file used for model_to_strategy2.py
 
 #### restrfresaggg.csv
 Test predictions for the random forest strategy
+
+#### rf_predictions.csv
+Test predictions from the Random Forest strategy
 
 ### stats/
 #### computetopics.ipynb
@@ -101,16 +107,10 @@ implements lag and adds stock data after prep2.py & computetopics.ipynb are run
 #### prepforq.py
 preprocessing for the Q learner
 
-#### randomForest.py 
-implements and tunes a Random Forest model
-
 #### requirements.txt 
 Contains all 3rd party packages that we use. To install, open a virtual environment and run
    
     pip install -r requirements.txt
-
-#### rf_predictions.csv
-Test predictions from the Random Forest strategy
 
 #### stock_util.py
 Utility file to acquire and preprocess stock data. Also contains some other relevant functions to deal with stock data.
