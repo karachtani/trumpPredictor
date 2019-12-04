@@ -1,7 +1,8 @@
 import pandas as pd
 from QLearningTrainer import StrategyLearner
-from prepForQ import get_q_data
+
 from file_util import save_to_memory_with_fname
+from q_learning.prepForQ import get_q_data
 
 
 def file_name(args=[]):
@@ -50,7 +51,4 @@ try:
                             save_to_memory_with_fname(test_port_dir, f_name, portfolio)
                             save_to_memory_with_fname(test_order_dir, f_name, ordersDF)
 finally:
-    prev_results = pd.read_csv('q_result/results.csv')
-    prev_results = prev_results[['rar', 'alpha', 'gamma', 'epochs', 'ticker', 'perf']]
-    results = pd.concat([prev_results, pd.DataFrame(data=row_list)])
-    save_to_memory_with_fname('q_result', 'results2.csv', results)
+    save_to_memory_with_fname('q_result', 'results2.csv', pd.DataFrame(data=row_list))

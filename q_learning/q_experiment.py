@@ -1,9 +1,9 @@
-import pandas as pd
 import matplotlib.pyplot as plt
-
+import pandas as pd
 from QLearningTrainer import StrategyLearner
-from prepForQ import get_q_data
-import datetime as dt
+
+from q_learning.prepForQ import get_q_data
+
 
 def scale(series):
     # return series / series.iloc[0]

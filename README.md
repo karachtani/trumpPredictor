@@ -6,6 +6,20 @@ Written by Sierra Wulfson, Colby Tobin, and Karan Achtani in CS 6220 during Fall
 ## Running
 
 ## File Explanations
+### q_learning/
+#### q_experiment.py
+q learner taught with optimal hyperparameters as found in Qtuner.py; this produced the graphs presented in workshop
+
+#### qLearner.py
+Q learning agent that uses reinforcement learning to learn based on rewards from the environemnt
+
+#### Qlearningtrainer.py
+Trains the Q learner by telling it what the rewards of certain actions are
+
+#### qTuner.py
+Gridsearch for Q learner to optimize hyper parameters
+
+
 ### randomforests/
 #### randomforestcode.py
 Runs a Random Forest and makes the bestrfresaggg.csv file used for model_to_strategy2.py
@@ -48,14 +62,6 @@ gridsearchcv tuning heat maps that can be generated from svmcode.py. These are f
 runs a svm and makes predictions csv for model_to_strategy2.py
 
 ### /
-#### qLearner.py
-Q learning agent that uses reinforcement learning to learn based on rewards from the environemnt
-
-#### Qlearningtrainer.py
-Trains the Q learner by telling it what the rewards of certain actions are
-
-#### qTuner.py
-Gridsearch for Q learner to optimize hyper parameters
 
 #### Bestnnresmeanpt5cutoff.csv
 Test predictions from the MLP strategy
@@ -89,9 +95,6 @@ implements lag and adds stock data after prep2.py & computetopics.ipynb are run
 
 #### prepforq.py
 preprocessing for the Q learner
-
-#### q_experiment.py
-q learner taught with optimal hyperparameters as found in Qtuner.py; this produced the graphs presented in workshop
 
 #### randomForest.py 
 implements and tunes a Random Forest model

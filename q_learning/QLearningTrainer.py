@@ -6,10 +6,12 @@ and modified for the purposes of this project.
 """
 
 import datetime as dt
-import pandas as pd
+
 import numpy as np
-import QLearner as ql
+import pandas as pd
+
 import marketsimcode as mktsim
+from q_learning import QLearner as ql
 
 
 class StrategyLearner(object):
