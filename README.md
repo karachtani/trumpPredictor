@@ -1,5 +1,5 @@
 # trumpPredictor
-Written by Sierra Wulfson, Colby Tobin, and Karan Achtani in CS 6220 during Fall 2018.
+Written by Sierra Wulfson, Colby Tobin, and Karan Achtani in CS 6220 during Fall 2019.
 
 ## Installation
 
