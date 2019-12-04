@@ -16,7 +16,7 @@ import numpy as np
 import itertools
 
 for lag in range(3, 6):
-    data = pd.read_csv("lag"+str(lag)+".csv", index_col=0)
+    data = pd.read_csv("../data_lag/lag"+str(lag)+".csv", index_col=0)
     def toint(output):
         return int(output)
     print(data.columns)

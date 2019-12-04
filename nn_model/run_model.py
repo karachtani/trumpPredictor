@@ -8,9 +8,9 @@ import numpy as np
 
 for lag in range(1):
     if lag == 0:
-        data = pd.read_csv("tweets_stock_data.csv", index_col=0)
+        data = pd.read_csv("../tweets_stock_data.csv", index_col=0)
     else:
-        data = pd.read_csv("lag"+str(lag)+".csv", index_col=0)
+        data = pd.read_csv("../data_lag/lag"+str(lag)+".csv", index_col=0)
     def toint(output):
         return int(output)
     # print(data.columns)

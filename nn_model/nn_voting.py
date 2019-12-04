@@ -23,9 +23,9 @@ import scipy
 #    UndefinedMetricWarning: F - score is ill - defined and being set to 0.0 in labels with no predicted samples.'precision', 'predicted', average, warn_for)
 warnings.filterwarnings("always")
 
-with open('nn_voter_log_wEMA_tuned.txt', "a") as log_file:
+with open('../nn_results/with_voting/nn_voter_log_wEMA_tuned.txt', "a") as log_file:
     for lag in [2,3,4]: #range(0, 8):
-        data = pd.read_csv("data_lag/lag"+str(lag)+".csv", index_col=0)
+        data = pd.read_csv("../data_lag/lag"+str(lag)+".csv", index_col=0)
 
         """ DATA PREP """
         def toint(output):

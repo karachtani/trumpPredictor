@@ -6,7 +6,18 @@ Written by Sierra Wulfson, Colby Tobin, and Karan Achtani in CS 6220 during Fall
 ## Running
 
 ## File Explanations
-### nn_results
+### nn_model/
+
+#### mlpcode.py
+code that runs a tuned MLP and makes predictions csv for model_to_strategy2.py
+
+#### model2.py
+tunes mlp
+
+#### nn_voting.py
+uses multiple lags to get predictions and has mode and mean voting to combine into predictions (not daily)
+
+### nn_results/
 Various results files from various experiments with the Neural Net model
 
 ### q_data/
@@ -79,29 +90,17 @@ Test predictions from the SVM strategy
 
 ### /
 
-#### Bestnnresmeanpt5cutoff.csv
-Test predictions from the MLP strategy
-
 #### file_util.py
 Util file to read and write from files to cache API data or computed data
 
 #### Marketsimcode.py
 code used by model_to_strategy.py and model_to_strategy2.py to implement trading portfolio
 
-#### Mlpcode.py
-code that runs a mlp and makes predictions csv for model_to_strategy2.py
-
-#### Model2.py
-tunes mlp
-
 #### model_to_strategy.py
 takes predictions and aggregates into daily predictions and implements a basic trading strategy
 
 #### model_to_strategy2.py
 takes aggregated daily predictions and implements a trading strategy
-
-#### nn_voting.py
-uses multiple lags to get predictions and has mode and mean voting to combine into predictions (not daily)
 
 #### Prep2.py	
 does data cleaning for lda and svm,rf,mlp
